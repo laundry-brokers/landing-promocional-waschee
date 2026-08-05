@@ -1,0 +1,22 @@
+---
+import NavbarComponente from "../components/NavbarComponente.vue";
+import HeroComponent from "../components/HeroComponent.vue";
+import IndustryComponent from "../components/IndustryComponent.vue";
+import FeaturesComponent from "../components/FeaturesComponent.vue";
+import SectorsComponent from "../components/SectorsComponent.vue";
+import TrustComponent from "../components/TrustComponent.vue";
+import InvestmentComponent from "../components/InvestmentComponent.vue";
+import FooterComponent from "../components/FooterComponent.vue";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+	<NavbarComponente client:load />
+	<HeroComponent client:load />
+	<IndustryComponent client:load />
+	<FeaturesComponent client:load />
+	<SectorsComponent client:load />
+	<TrustComponent client:load />
+	<InvestmentComponent client:load />
+	<FooterComponent client:load />
+</Layout>
