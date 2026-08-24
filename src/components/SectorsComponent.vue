@@ -13,7 +13,7 @@
       <!-- Sector Cards Grid -->
       <div class="row g-4 justify-content-center">
         <!-- Card 1: Hotelería -->
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
             <img src="/business/hoteleria_card.png" alt="Hotelería" class="card-img-top sector-img" />
             <div class="card-body p-4 d-flex align-items-start gap-3">
@@ -31,7 +31,7 @@
         </div>
         
         <!-- Card 2: Hospitales -->
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
             <img src="/business/hospitales_card.png" alt="Hospitales" class="card-img-top sector-img" />
             <div class="card-body p-4 d-flex align-items-start gap-3">
@@ -49,7 +49,7 @@
         </div>
         
         <!-- Card 3: Minería -->
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
             <img src="/business/mineria_card.png" alt="Minería" class="card-img-top sector-img" />
             <div class="card-body p-4 d-flex align-items-start gap-3">
@@ -67,7 +67,7 @@
         </div>
         
         <!-- Card 4: Industria -->
-        <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="col-sm-12 col-md-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
             <img src="/business/industria_card_waschee.png" alt="Industria" class="card-img-top sector-img" />
             <div class="card-body p-4 d-flex align-items-start gap-3">

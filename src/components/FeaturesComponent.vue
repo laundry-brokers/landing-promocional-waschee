@@ -4,21 +4,21 @@
       <div class="features-wrapper d-flex flex-column flex-lg-row align-items-stretch justify-content-between">
         
         <!-- Feature Item 1 -->
-        <div class="feature-item text-center px-lg-3 py-3 d-flex flex-column align-items-center">
+        <div class="feature-item reveal-child text-center px-lg-3 py-3 d-flex flex-column align-items-center">
           <div class="icon-wrapper mb-3">
             <img src="/points/ocho_anios_garantia_aschee.webp" alt="8 Años de Garantía" class="feature-icon" />
           </div> 
         </div>
         
         <!-- Feature Item 2 -->
-        <div class="feature-item text-center px-lg-3 py-3 d-flex flex-column align-items-center">
+        <div class="feature-item reveal-child text-center px-lg-3 py-3 d-flex flex-column align-items-center">
           <div class="icon-wrapper mb-3">
             <img src="/points/construccion_industrial.webp" alt="Construcción Industrial" class="feature-icon" />
           </div>
         </div>
         
         <!-- Feature Item 3 -->
-        <div class="feature-item text-center px-lg-3 py-3 d-flex flex-column align-items-center">
+        <div class="feature-item reveal-child text-center px-lg-3 py-3 d-flex flex-column align-items-center">
           <div class="icon-wrapper mb-3">
             <img src="/points/maxima_eficiencia_aschee.webp" alt="Máxima Eficiencia" class="feature-icon" />
           </div>
@@ -26,14 +26,14 @@
         </div>
         
         <!-- Feature Item 4 -->
-        <div class="feature-item text-center px-lg-3 py-3 d-flex flex-column align-items-center">
+        <div class="feature-item reveal-child text-center px-lg-3 py-3 d-flex flex-column align-items-center">
           <div class="icon-wrapper mb-3">
             <img src="/points/bajo_mantenimiento.webp" alt="Bajo Mantenimiento" class="feature-icon" />
           </div>
         </div>
         
         <!-- Feature Item 5 -->
-        <div class="feature-item text-center px-lg-3 py-3 d-flex flex-column align-items-center">
+        <div class="feature-item reveal-child text-center px-lg-3 py-3 d-flex flex-column align-items-center">
           <div class="icon-wrapper mb-3">
             <img src="/points/soporte_nacional.webp" alt="Soporte Nacional" class="feature-icon" />
           </div>

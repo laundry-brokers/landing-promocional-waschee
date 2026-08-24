@@ -44,7 +44,7 @@
             <a class="nav-link nav-text" href="#nosotros">NOSOTROS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#contacto">CONTACTO</a>
+            <a class="nav-link nav-text" href="#cotizar">CONTACTO</a>
           </li>
         </ul>
         

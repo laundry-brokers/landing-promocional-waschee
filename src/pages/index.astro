@@ -6,17 +6,38 @@ import FeaturesComponent from "../components/FeaturesComponent.vue";
 import SectorsComponent from "../components/SectorsComponent.vue";
 import TrustComponent from "../components/TrustComponent.vue";
 import InvestmentComponent from "../components/InvestmentComponent.vue";
+import ContactComponent from "../components/ContactComponent.vue";
 import FooterComponent from "../components/FooterComponent.vue";
+import FloatingWidgets from "../components/FloatingWidgets.vue";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<NavbarComponente client:load />
-	<HeroComponent client:load />
-	<IndustryComponent client:load />
-	<FeaturesComponent client:load />
-	<SectorsComponent client:load />
-	<TrustComponent client:load />
-	<InvestmentComponent client:load />
+	<div class="animate-fade-in-up">
+		<NavbarComponente client:load />
+	</div>
+	<div class="animate-fade-in-up animate-delay-1">
+		<HeroComponent client:load />
+	</div>
+	<div class="reveal">
+		<IndustryComponent client:load />
+	</div>
+	<div class="reveal-parent">
+		<FeaturesComponent client:load />
+	</div>
+	<div class="reveal-parent">
+		<SectorsComponent client:load />
+	</div>
+	<div class="reveal">
+		<TrustComponent client:load />
+	</div>
+	<div class="reveal">
+		<InvestmentComponent client:load />
+	</div>
+	<div class="reveal">
+		<ContactComponent client:load />
+	</div>
 	<FooterComponent client:load />
+	<FloatingWidgets client:load />
 </Layout>
+

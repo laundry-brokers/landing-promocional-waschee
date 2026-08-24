@@ -21,7 +21,7 @@
           
           <!-- CTA Button -->
           <div class="cta-container d-flex justify-content-center justify-content-lg-start">
-            <a href="#asesoria" class="btn btn-industry-cta d-flex align-items-center gap-2 justify-content-center">
+            <a href="#cotizar" class="btn btn-industry-cta d-flex align-items-center gap-2 justify-content-center">
               SOLICITAR ASESORÍA
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -98,7 +98,7 @@ export default {
 /* CTA Button */
 .btn-industry-cta {
   background-color: #001229; /* Dark navy matching the brand theme */
-  color: #ffffff;
+  color: #ffffff !important; /* Force text color to stay white */
   font-weight: 800;
   font-size: 14px;
   letter-spacing: 0.05em;
@@ -107,12 +107,23 @@ export default {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border: none;
   width: auto;
+  text-decoration: none;
+}
+
+.btn-industry-cta svg {
+  transition: transform 0.3s ease;
+  fill: #ffffff;
 }
 
 .btn-industry-cta:hover {
   background-color: #0c2545;
+  color: #ffffff !important; /* Ensure it stays white on hover */
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 18, 41, 0.25);
+}
+
+.btn-industry-cta:hover svg {
+  transform: translateX(4px); /* Micro-animation: slide arrow right */
 }
 
 .btn-industry-cta:active {
