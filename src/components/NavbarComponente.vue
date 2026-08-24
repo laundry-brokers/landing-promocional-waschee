@@ -24,33 +24,33 @@
         :class="{ 'show': isMenuOpen }" 
         id="navbarNav"
       >
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center gap-2 gap-lg-4">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center gap-1 gap-lg-4">
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#inicio">INICIO</a>
+            <a class="nav-link nav-text" href="#inicio" @click="closeMenu">INICIO</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#equipos">EQUIPOS</a>
+            <a class="nav-link nav-text" href="#equipos" @click="closeMenu">EQUIPOS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#sectores">SECTORES</a>
+            <a class="nav-link nav-text" href="#sectores" @click="closeMenu">SECTORES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#garantia">GARANTÍA</a>
+            <a class="nav-link nav-text" href="#garantia" @click="closeMenu">GARANTÍA</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#soporte">SOPORTE</a>
+            <a class="nav-link nav-text" href="#soporte" @click="closeMenu">SOPORTE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#nosotros">NOSOTROS</a>
+            <a class="nav-link nav-text" href="#nosotros" @click="closeMenu">NOSOTROS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#cotizar">CONTACTO</a>
+            <a class="nav-link nav-text" href="#cotizar" @click="closeMenu">CONTACTO</a>
           </li>
         </ul>
         
         <!-- CTA Button -->
         <div class="d-flex justify-content-center align-items-center">
-          <a href="#cotizar" class="btn btn-cta d-flex align-items-center gap-2 justify-content-center">
+          <a href="#cotizar" @click="closeMenu" class="btn btn-cta d-flex align-items-center gap-2 justify-content-center">
             COTIZAR AHORA
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -73,6 +73,9 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMenu() {
+      this.isMenuOpen = false;
     }
   }
 };
@@ -140,18 +143,26 @@ export default {
 @media (max-width: 991.98px) {
   .navbar-collapse {
     background-color: #000c1a;
-    padding: 24px 0 12px 0;
+    padding: 16px 8px 16px 8px;
+    border-radius: 12px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
   
   .nav-text {
-    padding: 12px 0;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 10px 0;
+    font-size: 13.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-item:last-child .nav-text {
+    border-bottom: none;
   }
   
   .btn-cta {
-    margin-top: 20px;
+    margin-top: 14px;
     width: 100%;
+    max-width: 320px;
   }
 }
 </style>

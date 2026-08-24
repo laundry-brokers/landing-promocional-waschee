@@ -1,10 +1,10 @@
 <template>
-  <section class="investment-section">
+  <section class="investment-section" id="soporte">
     <div class="container">
-      <div class="row align-items-center justify-content-between g-5 py-2">
+      <div class="row align-items-center justify-content-between g-4 g-lg-5 py-2">
         
         <!-- Left Side: Tu Inversión Trabaja Para Ti -->
-        <div class="col-xl-4 col-lg-6 col-md-12 d-flex align-items-start gap-4">
+        <div class="col-xl-4 col-lg-6 col-md-12 d-flex align-items-start gap-3 gap-sm-4">
           <div class="chart-icon-container">
             <!-- Left Chart SVG exactly as in mockup -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80" class="investment-chart-svg">
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Middle Side: Title & Button -->
-        <div class="col-xl-3 col-lg-5 col-md-12 d-flex flex-column align-items-start gap-3">
+        <div class="col-xl-3 col-lg-5 col-md-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start gap-3">
           <h4 class="middle-title text-uppercase m-0">
             HAZ CRECER TU NEGOCIO CON EQUIPOS PREPARADOS PARA DURAR
           </h4>
@@ -63,33 +63,33 @@
         </div>
 
         <!-- Right Side: 3 Benefits (exactly as in mockup) -->
-        <div class="col-xl-4 col-lg-12 d-flex flex-column flex-md-row justify-content-between gap-4 mt-4 mt-xl-0 ps-xl-4">
+        <div class="col-xl-4 col-lg-12 d-flex flex-column flex-sm-row justify-content-between gap-3 gap-md-4 mt-3 mt-xl-0 ps-xl-4">
           <!-- Benefit 1: Hasta 8 Años de Garantía -->
           <div class="benefit-card text-center">
-            <div class="benefit-icon mb-3">
+            <div class="benefit-icon mb-2 mb-md-3">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="svg-benefit" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M32 6 C18 6 12 12 12 28 C12 44 26 54 32 58 C38 54 52 44 52 28 C52 12 46 6 32 6 Z" stroke="white" fill="none" stroke-linejoin="round"/>
                 <text x="32" y="38" font-family="'Inter', sans-serif" font-weight="900" font-size="22" fill="white" text-anchor="middle">8</text>
               </svg>
             </div>
-            <h5 class="benefit-title-text text-uppercase mb-2">HASTA 8 AÑOS DE GARANTÍA</h5>
+            <h5 class="benefit-title-text text-uppercase mb-1 mb-md-2">HASTA 8 AÑOS DE GARANTÍA</h5>
             <p class="benefit-desc-text m-0">Protección total para tu inversión</p>
           </div>
 
           <!-- Benefit 2: Bajo Mantenimiento -->
           <div class="benefit-card text-center">
-            <div class="benefit-icon mb-3">
+            <div class="benefit-icon mb-2 mb-md-3">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-benefit" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
               </svg>
             </div>
-            <h5 class="benefit-title-text text-uppercase mb-2">BAJO MANTENIMIENTO</h5>
+            <h5 class="benefit-title-text text-uppercase mb-1 mb-md-2">BAJO MANTENIMIENTO</h5>
             <p class="benefit-desc-text m-0">Diseñados para reducir tiempos muertos y costos de operación</p>
           </div>
 
           <!-- Benefit 3: Soporte Nacional -->
           <div class="benefit-card text-center">
-            <div class="benefit-icon mb-3">
+            <div class="benefit-icon mb-2 mb-md-3">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-benefit" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5z"/>
                 <path d="M17 16H7a4 4 0 0 0-4 4v2h18v-2a4 4 0 0 0-4-4z"/>
@@ -98,7 +98,7 @@
                 <path d="M17.5 14c.5 1 .5 2 0 3h-2.5"/>
               </svg>
             </div>
-            <h5 class="benefit-title-text text-uppercase mb-2">SOPORTE NACIONAL</h5>
+            <h5 class="benefit-title-text text-uppercase mb-1 mb-md-2">SOPORTE NACIONAL</h5>
             <p class="benefit-desc-text m-0">Asesoría especializada antes, durante y después de tu compra</p>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 .investment-section {
-  background-color: #030d1c; /* Deep dark navy blue from mockup */
+  background-color: #030d1c;
   color: #ffffff;
   padding: 60px 0;
   font-family: 'Inter', sans-serif;
@@ -126,7 +126,7 @@ export default {
 }
 
 .chart-icon-container {
-  width: 90px;
+  width: 85px;
   flex-shrink: 0;
 }
 
@@ -140,14 +140,14 @@ export default {
 }
 
 .investment-title {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 900;
   line-height: 1.15;
   letter-spacing: -0.010em;
 }
 
 .text-yellow {
-  color: #e5a93c; /* Golden yellow */
+  color: #e5a93c;
 }
 
 .investment-desc {
@@ -166,7 +166,7 @@ export default {
 
 /* Middle Title styling */
 .middle-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
   line-height: 1.25;
   letter-spacing: 0.02em;
@@ -178,14 +178,15 @@ export default {
   background-color: #e5a93c;
   color: #000c1a;
   font-weight: 900;
-  font-size: 14.5px;
+  font-size: 14px;
   letter-spacing: 0.04em;
-  border-radius: 6px;
-  padding: 12px 28px;
+  border-radius: 8px;
+  padding: 12px 24px;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border: none;
   width: 100%;
+  max-width: 280px;
 }
 
 .btn-cotizar-now:hover {
@@ -210,8 +211,8 @@ export default {
 }
 
 .benefit-icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,12 +220,12 @@ export default {
 
 .svg-benefit {
   width: auto;
-  height: 42px;
+  height: 38px;
   color: #ffffff;
 }
 
 .benefit-title-text {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: 0.02em;
@@ -244,24 +245,44 @@ export default {
   .vertical-divider {
     display: none;
   }
-  
+}
+
+@media (max-width: 991.98px) {
+  .investment-section {
+    padding: 45px 0;
+  }
+
+  .middle-title {
+    max-width: 480px;
+  }
+
   .benefit-card {
     max-width: 100%;
-    margin-bottom: 15px;
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 575.98px) {
   .investment-section {
-    padding: 50px 0;
+    padding: 35px 0;
   }
   
   .chart-icon-container {
-    width: 70px;
+    width: 60px;
   }
-  
+
+  .investment-title {
+    font-size: 17px;
+  }
+
   .btn-cotizar-now {
     max-width: 100%;
+  }
+
+  .benefit-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 14px 10px;
   }
 }
 </style>

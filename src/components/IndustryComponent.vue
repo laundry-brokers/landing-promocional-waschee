@@ -140,25 +140,53 @@ export default {
 /* Mobile responsive */
 @media (max-width: 991.98px) {
   .industry-section {
-    background-image: none; /* Hide background image on mobile and use flat background */
+    background-image: none;
     background-color: #f2f4f7;
-    padding: 60px 0;
+    padding: 45px 0;
     text-align: center;
+  }
+
+  .section-title {
+    font-size: clamp(26px, 6vw, 38px);
   }
   
   .section-desc {
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+    font-size: 14.5px;
+  }
+
+  .btn-industry-cta {
+    width: 100%;
+    max-width: 340px;
   }
   
   .mobile-industry-img {
     width: 100%;
-    height: 300px;
+    max-width: 600px;
+    height: 260px;
     object-fit: cover;
-    object-position: 70% center; /* Crop to focus on the bright washer and dryer */
-    border-radius: 16px;
+    object-position: 70% center;
+    border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .industry-section {
+    padding: 35px 0;
+  }
+
+  .mobile-industry-img {
+    height: 200px;
+    border-radius: 10px;
+  }
+
+  .badge-img {
+    height: 42px;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <header class="hero-section d-flex align-items-center">
-    <div class="container py-4">
+  <header class="hero-section d-flex align-items-center" id="inicio">
+    <div class="container py-3 py-lg-4">
       <div class="row align-items-center">
         <!-- Text and Promo Column -->
         <div class="col-lg-5 text-center text-lg-start d-flex flex-column gap-3">
@@ -38,17 +38,17 @@
         
         <!-- Machines and Warranty Column -->
         <div class="col-lg-7 mt-4 mt-lg-0 text-center">
-          <div class="row align-items-center g-3">
+          <div class="row align-items-center justify-content-center g-3">
             <!-- Machines Display -->
-            <div class="col-md-10 position-relative text-center">
+            <div class="col-12 col-md-10 position-relative text-center">
               <!-- Image of Machines -->
-              <div class="machines-image-wrapper">
+              <div class="machines-image-wrapper w-100">
                 <img src="/hero/lavadoras_modelos_waschee.webp" alt="Lavadora y Secadora Industrial Waschée" class="img-fluid machines-img" />
               </div>
             </div>
             
             <!-- Warranty Display -->
-            <div class="col-md-2 mt-3 mt-md-0 d-flex flex-column align-items-center justify-content-center">
+            <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex flex-column align-items-center justify-content-center">
               <div class="warranty-badge-container d-flex flex-column align-items-center">
                 <img src="/hero/ocho_anios_garantia.webp" alt="8 Años de Garantía" class="img-fluid warranty-badge-img mb-2" />
                 <p class="warranty-text m-0 text-center">
@@ -255,37 +255,71 @@ export default {
 /* Responsive adjustments */
 @media (max-width: 991.98px) {
   .hero-section {
-    padding: 40px 0;
+    padding: 35px 0;
     text-align: center;
+    min-height: auto;
   }
   
+  .hero-title {
+    font-size: clamp(38px, 8vw, 56px);
+  }
 
-  
+  .hero-subtitle {
+    font-size: clamp(16px, 3.5vw, 22px);
+  }
+
+  .benefits-img {
+    max-height: 75px;
+  }
+
   .btn-hero-cta {
     width: 100%;
-    max-width: 400px;
+    max-width: 360px;
+    padding: 14px 28px;
+    font-size: 14px;
   }
   
   .machines-img {
-    max-height: 380px;
+    max-height: 320px;
   }
   
   .warranty-badge-container {
-    margin-top: 15px;
+    margin-top: 10px;
+  }
+
+  .warranty-badge-img {
+    max-height: 110px;
   }
 }
 
 @media (max-width: 575.98px) {
+  .hero-section {
+    padding: 25px 0;
+  }
+
+  .badge-promo {
+    font-size: 12px;
+    padding: 6px 18px;
+  }
+
   .hero-title {
-    font-size: 40px;
+    font-size: 36px;
   }
   
   .hero-subtitle {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .benefits-img {
+    max-height: 60px;
   }
   
   .machines-img {
-    max-height: 280px;
+    max-height: 240px;
+  }
+
+  .warranty-badge-img {
+    max-height: 95px;
   }
 }
 </style>

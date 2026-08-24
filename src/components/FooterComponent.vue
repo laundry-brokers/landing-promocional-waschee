@@ -1,7 +1,7 @@
 <template>
-  <footer class="footer-section">
+  <footer class="footer-section" id="nosotros">
     <div class="container">
-      <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 py-3">
+      <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3 gap-lg-4 py-2 py-lg-3">
         
         <!-- Left Side: Brand Logo and Subtitle -->
         <div class="footer-brand d-flex flex-column align-items-center align-items-lg-start">
@@ -10,7 +10,7 @@
         </div>
         
         <!-- Center Side: Contact details (Pre-rendered image blocks) -->
-        <div class="footer-contacts d-flex flex-column flex-md-row align-items-center justify-content-center gap-3 gap-md-4">
+        <div class="footer-contacts d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2 gap-sm-3 gap-md-4">
           <!-- Web Site Link -->
           <a href="https://waschee.com" target="_blank" class="footer-contact-link">
             <img src="/footer/correo_waschee.webp" alt="Website waschee.com" class="footer-contact-img" />
@@ -62,10 +62,10 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;855&display=swap');
 
 .footer-section {
-  background-color: #f2f4f7; /* Light gray background matching reference */
+  background-color: #f2f4f7;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   font-family: 'Inter', sans-serif;
-  padding: 10px 0;
+  padding: 14px 0;
 }
 
 .footer-logo {
@@ -77,7 +77,7 @@ export default {
 .footer-brand-subtext {
   font-size: 8px;
   font-weight: 800;
-  color: #001229; /* Dark navy blue */
+  color: #001229;
   letter-spacing: 0.05em;
   opacity: 0.8;
 }
@@ -93,8 +93,9 @@ export default {
 }
 
 .footer-contact-img {
-  height: 28px;
+  height: 26px;
   width: auto;
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -102,7 +103,7 @@ export default {
 .social-btn {
   width: 32px;
   height: 32px;
-  background-color: #001229; /* Dark navy matching the brand */
+  background-color: #001229;
   color: #ffffff;
   border-radius: 50%;
   display: flex;
@@ -113,7 +114,7 @@ export default {
 }
 
 .social-btn:hover {
-  background-color: #e5a93c; /* Golden yellow on hover */
+  background-color: #e5a93c;
   color: #000c1a;
   transform: translateY(-2px);
 }
@@ -121,12 +122,13 @@ export default {
 /* Responsive queries */
 @media (max-width: 991.98px) {
   .footer-section {
-    padding: 30px 0;
+    padding: 24px 0;
   }
-  
-  .footer-contacts {
-    flex-direction: column !important;
-    gap: 15px !important;
+}
+
+@media (max-width: 575.98px) {
+  .footer-contact-img {
+    height: 24px;
   }
 }
 </style>

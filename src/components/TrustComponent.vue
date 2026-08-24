@@ -1,6 +1,6 @@
 <template>
-  <section class="trust-section" id="confianza">
-    <div class="container py-3">
+  <section class="trust-section" id="garantia">
+    <div class="container py-2 py-lg-3">
       <div class="row align-items-center">
         <!-- Text Content Column -->
         <div class="col-lg-4 text-center text-lg-start d-flex flex-column gap-3 py-lg-4">
@@ -14,7 +14,7 @@
         </div>
         
         <!-- Features List Image Column -->
-        <div class="col-lg-6 mt-4 mt-lg-0 text-center">
+        <div class="col-lg-6 mt-3 mt-lg-0 text-center">
           <img src="/confianza/beneficios_waschee.webp" alt="Beneficios Waschée" class="img-fluid benefits-list-img" />
         </div>
         
@@ -22,7 +22,7 @@
         <div class="col-lg-2 d-none d-lg-block"></div>
         
         <!-- Mobile Machine Image Column (visible on mobile/tablet only) -->
-        <div class="col-12 d-block d-lg-none mt-4 text-center">
+        <div class="col-12 d-block d-lg-none mt-3 text-center">
           <img src="/confianza/fondo_banner1_waschee_1.webp" alt="Ingeniería Waschée" class="img-fluid mobile-machine-img" />
         </div>
       </div>
@@ -45,7 +45,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #f2f4f7; /* Off-white fallback to match background */
+  background-color: #f2f4f7;
   font-family: 'Inter', sans-serif;
   min-height: 460px;
   display: flex;
@@ -55,10 +55,10 @@ export default {
 }
 
 .trust-title {
-  font-size: clamp(26px, 3vw, 36px);
+  font-size: clamp(22px, 3vw, 36px);
   font-weight: 900;
-  line-height: 1.1;
-  color: #001229; /* Dark navy blue from mockup */
+  line-height: 1.15;
+  color: #001229;
   letter-spacing: -0.010em;
 }
 
@@ -83,9 +83,9 @@ export default {
 /* Mobile responsive */
 @media (max-width: 991.98px) {
   .trust-section {
-    background-image: none; /* Hide background image on mobile and use flat background */
+    background-image: none;
     background-color: #f2f4f7;
-    padding: 60px 0;
+    padding: 45px 0;
     text-align: center;
   }
   
@@ -96,17 +96,35 @@ export default {
   }
   
   .benefits-list-img {
-    max-height: none;
-    margin: 10px 0;
+    max-height: 180px;
+    margin: 8px 0;
   }
   
   .mobile-machine-img {
     width: 100%;
-    height: 240px;
+    max-width: 600px;
+    height: 220px;
     object-fit: cover;
-    object-position: right center; /* Focus on the circular metallic machine door */
-    border-radius: 16px;
+    object-position: right center;
+    border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .trust-section {
+    padding: 35px 0;
+  }
+
+  .benefits-list-img {
+    max-height: 150px;
+  }
+
+  .mobile-machine-img {
+    height: 180px;
+    border-radius: 10px;
   }
 }
 </style>

@@ -50,10 +50,10 @@
 
         <!-- Right Column: Interactive Form -->
         <div class="col-lg-6">
-          <div class="form-container-box p-4 p-md-5">
+          <div class="form-container-box p-3 p-sm-4 p-md-5">
             
             <!-- Success Message Box -->
-            <div v-if="isSuccess" class="success-message-box py-5 text-center d-flex flex-column align-items-center justify-content-center gap-3">
+            <div v-if="isSuccess" class="success-message-box py-4 py-md-5 text-center d-flex flex-column align-items-center justify-content-center gap-3">
               <div class="success-checkmark-pulse mb-2">
                 <i class="fa-solid fa-circle-check fa-4x text-yellow"></i>
               </div>
@@ -279,7 +279,7 @@ export default {
 .contact-section {
   background-color: #000c1a;
   color: #ffffff;
-  padding: 80px 0;
+  padding: 70px 0;
   font-family: 'Inter', sans-serif;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -364,7 +364,7 @@ export default {
   backdrop-filter: blur(16px);
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-  min-height: 490px; /* Keep height stable during success state transitions */
+  min-height: 490px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -563,7 +563,7 @@ export default {
 /* Responsive media queries */
 @media (max-width: 991.98px) {
   .contact-section {
-    padding: 60px 0;
+    padding: 50px 0;
   }
   
   .text-col {
@@ -577,6 +577,22 @@ export default {
   
   .benefit-item {
     text-align: left;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .contact-section {
+    padding: 35px 0;
+  }
+
+  .form-container-box {
+    border-radius: 16px;
+    padding: 20px 14px !important;
+    min-height: auto;
+  }
+
+  .form-box-title {
+    font-size: 18px;
   }
 }
 </style>
