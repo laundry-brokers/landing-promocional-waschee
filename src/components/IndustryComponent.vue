@@ -16,7 +16,7 @@
           
           <!-- Description -->
           <p class="section-desc mb-0">
-            Equipos de lavandería diseñados para operar todos los días, con máxima eficiencia, menor costo operativo y hasta 8 años de garantía.
+            Equipos de lavandería diseñados para operar todos los días, con máxima eficiencia, menor costo operativo y 8 años de garantía.
           </p>
           
           <!-- CTA Button -->

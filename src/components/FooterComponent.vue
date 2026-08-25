@@ -5,23 +5,23 @@
         
         <!-- Left Side: Brand Logo and Subtitle -->
         <div class="footer-brand d-flex flex-column align-items-center align-items-lg-start">
-          <img src="/logos/waschee_logo_azul.webp" alt="Waschée Logo" class="footer-logo mb-1" />
+          <img src="/logos/Logo_Laundrybrokers.png" alt="Waschée Logo" class="footer-logo mb-1" style="width: 220px; height: auto;" />
           <span class="footer-brand-subtext">EQUIPOS DE LAVANDERÍA INDUSTRIAL</span>
         </div>
         
         <!-- Center Side: Contact details (Pre-rendered image blocks) -->
         <div class="footer-contacts d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2 gap-sm-3 gap-md-4">
           <!-- Web Site Link -->
-          <a href="https://waschee.com" target="_blank" class="footer-contact-link">
-            <img src="/footer/correo_waschee.webp" alt="Website waschee.com" class="footer-contact-img" />
+          <a href="https://laundry-brokers.com" target="_blank" rel="noopener noreferrer" class="footer-contact-link">
+            <img src="/footer/sitio_web_laundry_brokers_waschee.webp" alt="Website laundry-brokers.com" class="footer-contact-img" />
           </a>
           <!-- Telephone Link -->
-          <a href="tel:3312046800" class="footer-contact-link">
-            <img src="/footer/telefono_waschee.webp" alt="Teléfono 33 1204 6800" class="footer-contact-img" />
+          <a href="tel:5550590039" class="footer-contact-link">
+            <img src="/footer/numero_telefonico_waschee.webp" alt="Teléfono (55) 5059 0039" class="footer-contact-img" />
           </a>
           <!-- Email Link -->
-          <a href="mailto:ventas@waschee.com" class="footer-contact-link">
-            <img src="/footer/correo_waschee_1.webp" alt="Correo ventas@waschee.com" class="footer-contact-img" />
+          <a href="mailto:iniciativas@laundry-brokers.com" class="footer-contact-link">
+            <img src="/footer/correo_electroniico_easchee.webp" alt="Correo iniciativas@laundry-brokers.com" class="footer-contact-img" />
           </a>
         </div>
         

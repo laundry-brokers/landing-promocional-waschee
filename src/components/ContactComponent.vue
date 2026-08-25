@@ -72,6 +72,12 @@
             <div v-else>
               <h3 class="form-box-title text-center text-uppercase mb-4">Solicitar Cotización</h3>
               
+              <!-- Server Error Alert -->
+              <div v-if="serverError" class="alert-error-custom mb-3 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-circle-exclamation flex-shrink-0"></i>
+                <span>{{ serverError }}</span>
+              </div>
+
               <form @submit.prevent="handleSubmit" class="contact-form d-flex flex-column gap-3" novalidate>
                 <!-- Name Input -->
                 <div class="form-group">
@@ -87,6 +93,7 @@
                       class="form-control-custom" 
                       :class="{ 'is-invalid-custom': errors.name }"
                       placeholder="Ej. Juan Pérez" 
+                      :disabled="isSubmitting"
                       required 
                     />
                   </div>
@@ -107,6 +114,7 @@
                       class="form-control-custom" 
                       :class="{ 'is-invalid-custom': errors.phone }"
                       placeholder="Ej. 55 1234 5678" 
+                      :disabled="isSubmitting"
                       required 
                     />
                   </div>
@@ -127,6 +135,7 @@
                       class="form-control-custom" 
                       :class="{ 'is-invalid-custom': errors.email }"
                       placeholder="Ej. juan@correo.com" 
+                      :disabled="isSubmitting"
                       required 
                     />
                   </div>
@@ -144,6 +153,7 @@
                       @change="validateField('sector')"
                       class="form-control-custom select-custom" 
                       :class="{ 'is-invalid-custom': errors.sector }"
+                      :disabled="isSubmitting"
                       required
                     >
                       <option value="" disabled>Selecciona tu sector</option>
@@ -167,13 +177,19 @@
                     class="form-control-custom textarea-custom" 
                     rows="3" 
                     placeholder="Cuéntanos más sobre las necesidades de tu operación..."
+                    :disabled="isSubmitting"
                   ></textarea>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-form-submit w-100 d-flex align-items-center justify-content-center gap-2 mt-2">
-                  ENVIAR SOLICITUD
-                  <i class="fa-solid fa-paper-plane"></i>
+                <button 
+                  type="submit" 
+                  class="btn btn-form-submit w-100 d-flex align-items-center justify-content-center gap-2 mt-2"
+                  :disabled="isSubmitting"
+                >
+                  <span v-if="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  <span>{{ isSubmitting ? 'ENVIANDO SOLICITUD...' : 'ENVIAR SOLICITUD' }}</span>
+                  <i v-if="!isSubmitting" class="fa-solid fa-paper-plane"></i>
                 </button>
               </form>
             </div>
@@ -187,6 +203,8 @@
 </template>
 
 <script>
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://api-waschee-promo-lb.test/api/contact';
+
 export default {
   name: 'ContactComponent',
   data() {
@@ -204,6 +222,8 @@ export default {
         email: '',
         sector: ''
       },
+      isSubmitting: false,
+      serverError: '',
       isSuccess: false
     };
   },
@@ -251,6 +271,7 @@ export default {
     },
     clearError(field) {
       this.errors[field] = '';
+      this.serverError = '';
     },
     validateForm() {
       this.validateField('name');
@@ -260,13 +281,52 @@ export default {
 
       return !this.errors.name && !this.errors.phone && !this.errors.email && !this.errors.sector;
     },
-    handleSubmit() {
-      if (this.validateForm()) {
-        this.isSuccess = true;
-        // Wait 3 seconds then redirect to /gracias
-        setTimeout(() => {
-          window.location.href = '/gracias';
-        }, 3000);
+    async handleSubmit() {
+      if (!this.validateForm() || this.isSubmitting) return;
+
+      this.isSubmitting = true;
+      this.serverError = '';
+
+      const payload = {
+        full_name: this.form.name.trim(),
+        phone: this.form.phone.trim(),
+        email: this.form.email.trim(),
+        sector: this.form.sector,
+        message: this.form.message.trim() || 'Solicitud de información sobre promoción Dúo Industrial'
+      };
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          this.isSuccess = true;
+          // Wait 3 seconds then redirect to /gracias
+          setTimeout(() => {
+            window.location.href = '/gracias';
+          }, 3000);
+        } else if (response.status === 422 && data.errors) {
+          if (data.errors.full_name) this.errors.name = data.errors.full_name[0];
+          if (data.errors.phone) this.errors.phone = data.errors.phone[0];
+          if (data.errors.email) this.errors.email = data.errors.email[0];
+          if (data.errors.sector) this.errors.sector = data.errors.sector[0];
+          this.serverError = data.message || 'Por favor verifica los datos ingresados.';
+        } else {
+          this.serverError = data.message || 'Ocurrió un error al enviar el formulario. Por favor intenta nuevamente.';
+        }
+      } catch (error) {
+        console.error('Error al enviar formulario:', error);
+        this.serverError = 'No se pudo conectar con el servidor. Verifica tu conexión e inténtalo nuevamente.';
+      } finally {
+        this.isSubmitting = false;
       }
     }
   }
@@ -442,6 +502,17 @@ export default {
   font-weight: 600;
   margin-top: 2px;
   letter-spacing: 0.01em;
+}
+
+.alert-error-custom {
+  background-color: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  line-height: 1.4;
 }
 
 /* Select element customization */

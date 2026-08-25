@@ -3,7 +3,7 @@
     <div class="container-fluid px-lg-5">
       <!-- Logo -->
       <a class="navbar-brand d-flex align-items-center" href="/">
-        <img src="/logos/waschee_logo_blanco_transparente.webp" alt="Waschée" class="logo-img" />
+        <img src="/logos/Logo_Laundrybrokers.png" alt="Waschée" class="logo-img" style="width: 300px; height: auto;" />
       </a>
       
       <!-- Hamburger Button (Mobile) -->
@@ -26,22 +26,10 @@
       >
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center gap-1 gap-lg-4">
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#inicio" @click="closeMenu">INICIO</a>
+            <a class="nav-link nav-text" href="/" @click="closeMenu">INICIO</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-text" href="#equipos" @click="closeMenu">EQUIPOS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-text" href="#sectores" @click="closeMenu">SECTORES</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-text" href="#garantia" @click="closeMenu">GARANTÍA</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-text" href="#soporte" @click="closeMenu">SOPORTE</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-text" href="#nosotros" @click="closeMenu">NOSOTROS</a>
+            <a class="nav-link nav-text" href="https://waschee.com/mx/catalogo" target="_blank" @click="closeMenu">EQUIPOS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-text" href="#cotizar" @click="closeMenu">CONTACTO</a>

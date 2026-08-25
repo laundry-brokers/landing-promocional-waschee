@@ -3,39 +3,47 @@ import "bootstrap/dist/css/bootstrap.min.css";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/logos/favicon_lb.jpg" />
+		<link rel="icon" href="/logos/favicon_lb.jpg" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<title>Waschée - Todo incluido</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+			integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<title>Laundry Brokers - Todo incluido</title>
 	</head>
 	<body>
 		<slot />
 
 		<!-- Intersection Observer Script for reveal-on-scroll animations -->
 		<script is:inline>
-			document.addEventListener('DOMContentLoaded', () => {
+			document.addEventListener("DOMContentLoaded", () => {
 				const observerOptions = {
 					root: null,
-					rootMargin: '0px -20px -20px 0px', // slightly offset trigger to feel natural
-					threshold: 0.1
+					rootMargin: "0px -20px -20px 0px", // slightly offset trigger to feel natural
+					threshold: 0.1,
 				};
 
 				const observer = new IntersectionObserver((entries, obs) => {
-					entries.forEach(entry => {
+					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
-							entry.target.classList.add('active');
+							entry.target.classList.add("active");
 							obs.unobserve(entry.target);
 						}
 					});
 				}, observerOptions);
 
-				const revealElements = document.querySelectorAll('.reveal, .reveal-parent');
-				revealElements.forEach(el => observer.observe(el));
+				const revealElements = document.querySelectorAll(
+					".reveal, .reveal-parent",
+				);
+				revealElements.forEach((el) => observer.observe(el));
 			});
 		</script>
 	</body>
@@ -57,7 +65,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-	*, *::before, *::after {
+	*,
+	*::before,
+	*::after {
 		box-sizing: border-box;
 	}
 
@@ -65,7 +75,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 	.reveal {
 		opacity: 0;
 		transform: translateY(25px);
-		transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+		transition:
+			opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+			transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 		will-change: opacity, transform;
 	}
 
@@ -78,7 +90,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 	.reveal-parent .reveal-child {
 		opacity: 0;
 		transform: translateY(20px);
-		transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+		transition:
+			opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+			transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 		will-change: opacity, transform;
 	}
 
@@ -88,11 +102,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 	}
 
 	/* Delays for staggered child animations */
-	.reveal-parent.active .reveal-child:nth-child(1) { transition-delay: 100ms; }
-	.reveal-parent.active .reveal-child:nth-child(2) { transition-delay: 200ms; }
-	.reveal-parent.active .reveal-child:nth-child(3) { transition-delay: 300ms; }
-	.reveal-parent.active .reveal-child:nth-child(4) { transition-delay: 400ms; }
-	.reveal-parent.active .reveal-child:nth-child(5) { transition-delay: 500ms; }
+	.reveal-parent.active .reveal-child:nth-child(1) {
+		transition-delay: 100ms;
+	}
+	.reveal-parent.active .reveal-child:nth-child(2) {
+		transition-delay: 200ms;
+	}
+	.reveal-parent.active .reveal-child:nth-child(3) {
+		transition-delay: 300ms;
+	}
+	.reveal-parent.active .reveal-child:nth-child(4) {
+		transition-delay: 400ms;
+	}
+	.reveal-parent.active .reveal-child:nth-child(5) {
+		transition-delay: 500ms;
+	}
 
 	/* Immediate load animations for Hero and Navbar (Viewport entry) */
 	@keyframes fadeInUp {
