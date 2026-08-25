@@ -31,7 +31,7 @@
           
           <!-- Experience Badge -->
           <div class="badge-experience d-flex align-items-center justify-content-center justify-content-lg-start mt-2">
-            <img src="/industrial/mas_de_treinta_anios.webp" alt="MÁS DE 30 AÑOS DE EXPERIENCIA RESPALDAN NUESTRA INGENIERÍA" class="badge-img" />
+            <img src="/industrial/beneficios_waschee.webp" alt="MÁS DE 30 AÑOS DE EXPERIENCIA RESPALDAN NUESTRA INGENIERÍA" class="badge-img" />
           </div>
         </div>
         

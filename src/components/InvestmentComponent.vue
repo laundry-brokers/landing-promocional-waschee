@@ -73,7 +73,7 @@
               </svg>
             </div>
             <h5 class="benefit-title-text text-uppercase mb-1 mb-md-2">HASTA 8 AÑOS DE GARANTÍA</h5>
-            <p class="benefit-desc-text m-0">Protección total para tu inversión</p>
+            <p class="benefit-desc-text m-0">Compromiso real con la calidad de los equipos</p>
           </div>
 
           <!-- Benefit 2: Bajo Mantenimiento -->

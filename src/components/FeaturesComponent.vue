@@ -13,7 +13,7 @@
         <!-- Feature Item 2 -->
         <div class="feature-item reveal-child">
           <div class="icon-wrapper">
-            <img src="/points/construccion_industrial.webp" alt="Construcción Industrial" class="feature-icon" />
+            <img src="/points/Construcción_industrial_acero_304.webp" alt="Construcción Industrial Acero 304" class="feature-icon" />
           </div>
         </div>
         

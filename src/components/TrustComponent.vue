@@ -9,13 +9,13 @@
             <span class="text-dark-blue">INSPIRA CONFIANZA</span>
           </h2>
           <p class="trust-desc m-0">
-            Más de tres décadas de experiencia en el desarrollo de equipos profesionales. Combinamos investigación constante, materiales de máxima resistencia y estrictos controles de calidad para entregar equipos que superen las expectativas y permanezcan firmes con el paso del tiempo.
+            Más de tres décadas de experiencia en el desarrollo de equipos profesionales. Combinando investigación constante, materiales de máxima resistencia y estrictos controles de calidad para entregar equipos que superen las expectativas y permanezcan firmes con el paso del tiempo.
           </p>
         </div>
         
         <!-- Features List Image Column -->
         <div class="col-lg-6 mt-3 mt-lg-0 text-center">
-          <img src="/confianza/beneficios_waschee.webp" alt="Beneficios Waschée" class="img-fluid benefits-list-img" />
+          <img src="/confianza/beneficios_waschee_1.webp" alt="Beneficios Waschée" class="img-fluid benefits-list-img" />
         </div>
         
         <!-- Empty Spacer Column for background machine on desktop -->
@@ -23,7 +23,7 @@
         
         <!-- Mobile Machine Image Column (visible on mobile/tablet only) -->
         <div class="col-12 d-block d-lg-none mt-3 text-center">
-          <img src="/confianza/fondo_banner1_waschee_1.webp" alt="Ingeniería Waschée" class="img-fluid mobile-machine-img" />
+          <img src="/hero/banner3_waschee_todo_incluido_DCLA.webp" alt="Ingeniería Waschée" class="img-fluid mobile-machine-img" />
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@ export default {
 
 .trust-section {
   position: relative;
-  background-image: url('/confianza/fondo_banner1_waschee_1.webp');
+  background-image: url('/hero/banner3_waschee_todo_incluido_DCLA.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

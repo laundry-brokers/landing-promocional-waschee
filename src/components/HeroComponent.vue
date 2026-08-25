@@ -52,7 +52,7 @@
               <div class="warranty-badge-container d-flex flex-column align-items-center">
                 <img src="/hero/ocho_anios_garantia.webp" alt="8 Años de Garantía" class="img-fluid warranty-badge-img mb-2" />
                 <p class="warranty-text m-0 text-center">
-                  UNA DE LAS GARANTÍAS<br />MÁS AMPLIAS<br />DE LA INDUSTRIA
+                  COMPROMISO REAL CON LA CALIDAD DE LOS EQUIPOS
                 </p>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default {
 
 .hero-section {
   position: relative;
-  background-image: url('/hero/background_banner_inicial_waschee.webp');
+  background-image: url('/hero/banner1_todo_incluido_waschee_WLCA.webp');
   background-size: cover;
   background-position: center;
   color: #ffffff;
