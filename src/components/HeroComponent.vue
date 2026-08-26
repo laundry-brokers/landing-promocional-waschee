@@ -68,47 +68,7 @@ export default {
   name: 'HeroComponent',
   data() {
     return {
-      benefitsImageSrc: '/hero/puesta_marcha_mantenimiento.webp'
-    };
-  },
-  mounted() {
-    const img = new Image();
-    img.src = '/hero/puesta_marcha_mantenimiento.webp';
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      
-      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imgData.data;
-      
-      // Symmetrical layout scan to change the white truck to golden yellow.
-      // Image width: 651px, height: 127px. Center is at ~325px.
-      // Truck icon is approximately between x = 340 and x = 405.
-      const startX = Math.round(canvas.width * 0.52); // ~338px
-      const endX = Math.round(canvas.width * 0.63);   // ~410px
-      
-      for (let y = 0; y < canvas.height; y++) {
-        for (let x = startX; x < endX; x++) {
-          const idx = (y * canvas.width + x) * 4;
-          const r = data[idx];
-          const g = data[idx+1];
-          const b = data[idx+2];
-          const a = data[idx+3];
-          
-          // Color near-white pixels to golden yellow (#e5a93c)
-          if (r > 200 && g > 200 && b > 200 && a > 5) {
-            data[idx] = 229;     // R
-            data[idx+1] = 169;   // G
-            data[idx+2] = 60;    // B
-          }
-        }
-      }
-      
-      ctx.putImageData(imgData, 0, 0);
-      this.benefitsImageSrc = canvas.toDataURL('image/png');
+      benefitsImageSrc: '/hero/puesta_marcha_mantenimiento_colored.webp'
     };
   }
 };

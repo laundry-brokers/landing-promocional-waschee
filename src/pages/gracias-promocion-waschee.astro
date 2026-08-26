@@ -1,0 +1,441 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavbarComponente from "../components/NavbarComponente.vue";
+import FooterComponent from "../components/FooterComponent.vue";
+import FloatingWidgets from "../components/FloatingWidgets.vue";
+---
+
+<Layout>
+  <!-- Navbar -->
+  <NavbarComponente client:load />
+
+  <main class="thanks-wrapper position-relative d-flex flex-column justify-content-center">
+    <!-- Glowing background accents -->
+    <div class="glow-accent glow-top"></div>
+    <div class="glow-accent glow-bottom"></div>
+
+    <div class="container py-5 my-auto">
+      <div class="row justify-content-center">
+        <div class="col-xl-9 col-lg-10 col-md-11 col-12">
+          
+          <!-- Main Glassmorphic Card -->
+          <div class="thanks-card p-4 p-md-5 text-center position-relative">
+            
+            <!-- Badge Tag -->
+            <div class="promo-badge-wrapper mb-3">
+              <span class="promo-badge">
+                <i class="fa-solid fa-layer-group me-2"></i>TODO INCLUIDO
+              </span>
+            </div>
+
+            <!-- Animated Check Icon with Radial Rings -->
+            <div class="icon-pulse-container mb-4">
+              <div class="pulse-ring ring-1"></div>
+              <div class="pulse-ring ring-2"></div>
+              <div class="icon-circle">
+                <i class="fa-solid fa-circle-check fa-4x check-icon"></i>
+              </div>
+            </div>
+
+            <!-- Main Titles -->
+            <h1 class="thanks-title mb-2">
+              ¡MUCHAS <span class="highlight-yellow">GRACIAS!</span>
+            </h1>
+            <h2 class="thanks-subtitle mb-4">
+              HEMOS RECIBIDO TU SOLICITUD EXITOSAMENTE
+            </h2>
+
+            <!-- Description Message -->
+            <p class="thanks-description mx-auto mb-4">
+              Un asesor comercial especializado se comunicará contigo a la brevedad para brindarte una <strong class="text-yellow-light">cotización personalizada</strong> con todos los beneficios de <strong>Todo Incluido</strong>.
+            </p>
+
+            <!-- 3 Benefits Cards Grid -->
+            <div class="benefits-grid row g-3 g-md-4 justify-content-center my-4">
+              <!-- Benefit 1: Hasta 8 Años de Garantía -->
+              <div class="col-md-4 col-sm-12">
+                <div class="benefit-item-card h-100 p-3 text-center d-flex flex-column align-items-center">
+                  <div class="benefit-icon-box mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="svg-benefit-icon" fill="none">
+                      <!-- Shield shape with gold border -->
+                      <path d="M24 5L9 11v13c0 9.8 6.4 19 15 21.5 8.6-2.5 15-11.7 15-21.5V11L24 5z" fill="rgba(229, 169, 60, 0.12)" stroke="#e5a93c" stroke-width="2.2" stroke-linejoin="round"/>
+                      <!-- Central medal / badge with 8 -->
+                      <circle cx="24" cy="22" r="8" stroke="#ffffff" stroke-width="1.8" fill="rgba(0, 12, 26, 0.8)"/>
+                      <text x="24" y="26.5" font-family="'Inter', sans-serif" font-weight="900" font-size="12.5" fill="#e5a93c" text-anchor="middle">8</text>
+                      <!-- Ribbon -->
+                      <path d="M20.5 32l3.5-2 3.5 2v-4h-7v4z" fill="#e5a93c"/>
+                    </svg>
+                  </div>
+                  <h3 class="benefit-title-heading text-uppercase mb-2">HASTA 8 AÑOS DE GARANTÍA</h3>
+                  <p class="benefit-description-text m-0">Compromiso real con la calidad de los equipos</p>
+                </div>
+              </div>
+
+              <!-- Benefit 2: Bajo Mantenimiento -->
+              <div class="col-md-4 col-sm-12">
+                <div class="benefit-item-card h-100 p-3 text-center d-flex flex-column align-items-center">
+                  <div class="benefit-icon-box mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="svg-benefit-icon" fill="none">
+                      <!-- Gear base -->
+                      <circle cx="24" cy="24" r="19" fill="rgba(229, 169, 60, 0.1)" stroke="rgba(229, 169, 60, 0.3)" stroke-width="1.5"/>
+                      <!-- Cog teeth indicators -->
+                      <path d="M24 8v3m0 26v3m16-16h-3M11 24H8m22.6-8.6l-2.1 2.1m-15 15l-2.1 2.1m0-19.2l2.1 2.1m15 15l2.1 2.1" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" stroke-linecap="round"/>
+                      <!-- Precision Wrench -->
+                      <path d="M16 32l9-9m3-3l3.5-3.5a4 4 0 0 1 5.7 5.7L33.7 25.7a4 4 0 0 1-5.7 0l-1-1" stroke="#e5a93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <circle cx="16" cy="32" r="2.5" fill="#ffffff"/>
+                    </svg>
+                  </div>
+                  <h3 class="benefit-title-heading text-uppercase mb-2">BAJO MANTENIMIENTO</h3>
+                  <p class="benefit-description-text m-0">Diseñados para reducir tiempos muertos y costos de operación</p>
+                </div>
+              </div>
+
+              <!-- Benefit 3: Soporte Nacional -->
+              <div class="col-md-4 col-sm-12">
+                <div class="benefit-item-card h-100 p-3 text-center d-flex flex-column align-items-center">
+                  <div class="benefit-icon-box mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="svg-benefit-icon" fill="none">
+                      <!-- Outer subtle glow circle -->
+                      <circle cx="24" cy="24" r="19" fill="rgba(229, 169, 60, 0.1)" stroke="rgba(229, 169, 60, 0.3)" stroke-width="1.5"/>
+                      <!-- Professional Headset -->
+                      <path d="M14 24c0-5.5 4.5-10 10-10s10 4.5 10 10v4a3 3 0 0 1-3 3h-1.5v-7h2.5v-1c0-4.4-3.6-7-8-7s-8 2.6-8 7v1h2.5v7H17a3 3 0 0 1-3-3v-4z" fill="rgba(229, 169, 60, 0.15)" stroke="#e5a93c" stroke-width="2.2" stroke-linejoin="round"/>
+                      <!-- Mic stem -->
+                      <path d="M29 33v2a3.5 3.5 0 0 1-3.5 3.5h-3.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="21" cy="38.5" r="2" fill="#e5a93c"/>
+                      <!-- Broadcast / signal arc -->
+                      <path d="M36 18a14 14 0 0 1 0 12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                  </div>
+                  <h3 class="benefit-title-heading text-uppercase mb-2">SOPORTE NACIONAL</h3>
+                  <p class="benefit-description-text m-0">Asesoría especializada antes, durante y después de tu compra</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons Container -->
+            <div class="cta-actions d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3 mt-4">
+              <!-- Primary WhatsApp Fast Contact -->
+              <a 
+                href="https://wa.me/525540846505?text=Hola%2C%20acabo%20de%20solicitar%20informaci%C3%B3n%20sobre%20Todo%20Incluido%20y%20me%20gustar%C3%ADa%20atenci%C3%B3n%20inmediata." 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn-whatsapp-cta d-inline-flex align-items-center justify-content-center gap-2 w-100 w-sm-auto"
+              >
+                <i class="fa-brands fa-whatsapp fa-lg"></i>
+                <span>ATENCIÓN INMEDIATA POR WHATSAPP</span>
+              </a>
+
+              <!-- Secondary Return to Home -->
+              <a href="/" class="btn btn-back-cta d-inline-flex align-items-center justify-content-center gap-2 w-100 w-sm-auto">
+                <i class="fa-solid fa-house"></i>
+                <span>VOLVER AL INICIO</span>
+              </a>
+            </div>
+
+            <!-- Security & Warranty Note -->
+            <div class="trust-note d-flex align-items-center justify-content-center gap-2 mt-4">
+              <i class="fa-solid fa-shield-halved text-yellow"></i>
+              <span>Respaldado por <strong>Laundry Brokers</strong> • 8 Años de Garantía • Soporte Nacional</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer & Widgets -->
+  <FooterComponent client:load />
+  <FloatingWidgets client:load />
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  .thanks-wrapper {
+    min-height: 100vh;
+    background-color: #000c1a;
+    position: relative;
+    overflow: hidden;
+    padding-top: 110px;
+    padding-bottom: 40px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Radial glowing accents */
+  .glow-accent {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow-top {
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background: radial-gradient(circle, rgba(229, 169, 60, 0.12) 0%, rgba(0, 12, 26, 0) 70%);
+  }
+
+  .glow-bottom {
+    bottom: -10%;
+    right: 10%;
+    background: radial-gradient(circle, rgba(0, 114, 206, 0.08) 0%, rgba(0, 12, 26, 0) 70%);
+  }
+
+  /* Main Card with Glassmorphism */
+  .thanks-card {
+    background: rgba(3, 20, 42, 0.65);
+    border: 1px solid rgba(229, 169, 60, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(229, 169, 60, 0.05);
+    z-index: 1;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .promo-badge-wrapper {
+    display: inline-block;
+  }
+
+  .promo-badge {
+    background: rgba(229, 169, 60, 0.15);
+    color: #e5a93c;
+    border: 1px solid rgba(229, 169, 60, 0.35);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 6px 16px;
+    border-radius: 50px;
+    text-transform: uppercase;
+  }
+
+  /* Animated Icon & Rings */
+  .icon-pulse-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-circle {
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle, rgba(229, 169, 60, 0.25) 0%, rgba(229, 169, 60, 0.05) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #e5a93c;
+    z-index: 3;
+    box-shadow: 0 0 30px rgba(229, 169, 60, 0.3);
+  }
+
+  .check-icon {
+    color: #e5a93c;
+    animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  .pulse-ring {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(229, 169, 60, 0.45);
+    z-index: 2;
+  }
+
+  .ring-1 {
+    animation: pulseRing 2.4s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .ring-2 {
+    animation: pulseRing 2.4s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-delay: 1.2s;
+  }
+
+  /* Typography */
+  .thanks-title {
+    font-size: clamp(30px, 4.2vw, 48px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    line-height: 1.15;
+  }
+
+  .highlight-yellow {
+    color: #e5a93c;
+    text-shadow: 0 0 20px rgba(229, 169, 60, 0.3);
+  }
+
+  .text-yellow-light {
+    color: #ffd073;
+  }
+
+  .text-yellow {
+    color: #e5a93c;
+  }
+
+  .thanks-subtitle {
+    font-size: clamp(15px, 1.8vw, 19px);
+    font-weight: 700;
+    color: #d1d9e2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .thanks-description {
+    font-size: clamp(14px, 1.5vw, 16.5px);
+    color: #9cb1c9;
+    line-height: 1.65;
+    max-width: 680px;
+  }
+
+  /* Benefit Item Cards (from reference image) */
+  .benefit-item-card {
+    background: rgba(4, 30, 63, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .benefit-item-card:hover {
+    background: rgba(4, 30, 63, 0.75);
+    border-color: rgba(229, 169, 60, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .benefit-icon-box {
+    width: 68px;
+    height: 68px;
+    background: rgba(2, 14, 31, 0.8);
+    border: 1.5px solid rgba(229, 169, 60, 0.5);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(229, 169, 60, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .benefit-item-card:hover .benefit-icon-box {
+    border-color: #e5a93c;
+    box-shadow: 0 6px 20px rgba(229, 169, 60, 0.3);
+    transform: scale(1.05);
+  }
+
+  .svg-benefit-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .benefit-title-heading {
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+  }
+
+  .benefit-description-text {
+    font-size: 0.82rem;
+    color: #9cb1c9;
+    line-height: 1.45;
+    max-width: 220px;
+  }
+
+  /* CTAs */
+  .btn-whatsapp-cta {
+    background-color: #25D366;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    border-radius: 12px;
+    padding: 14px 26px;
+    border: none;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .btn-whatsapp-cta:hover {
+    background-color: #20ba5a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+  }
+
+  .btn-back-cta {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    border-radius: 12px;
+    padding: 14px 26px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-back-cta:hover {
+    background: rgba(229, 169, 60, 0.15);
+    color: #e5a93c;
+    border-color: rgba(229, 169, 60, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .trust-note {
+    font-size: 0.85rem;
+    color: #8fa0b5;
+  }
+
+  /* Animations */
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulseRing {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      transform: scale(1.65);
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .thanks-wrapper {
+      padding-top: 90px;
+    }
+    
+    .thanks-card {
+      padding: 28px 16px !important;
+      border-radius: 20px;
+    }
+
+    .cta-actions {
+      width: 100%;
+    }
+  }
+</style>
