@@ -40,7 +40,7 @@
         
         <!-- Mobile Image Column (Only visible on mobile/tablet) -->
         <div class="col-lg-6 d-block d-lg-none mt-4 text-center">
-          <img src="/industrial/background_waschee_dos.webp" alt="Equipos Industriales Waschée" class="img-fluid mobile-industry-img" />
+          <img src="/industrial/background_banner_inicial_waschee.webp" alt="Equipos Industriales Waschée" class="img-fluid mobile-industry-img" />
         </div>
       </div>
     </div>
@@ -58,11 +58,11 @@ export default {
 
 .industry-section {
   position: relative;
-  background-image: url('/industrial/background_waschee_dos.webp');
+  background-image: url('/industrial/background_banner_inicial_waschee.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #f2f4f7; /* Off-white fallback to match background_waschee_dos.webp */
+  background-color: #f2f4f7; /* Off-white fallback to match background_banner_inicial_waschee.webp */
   font-family: 'Inter', sans-serif;
   min-height: 520px;
   display: flex;

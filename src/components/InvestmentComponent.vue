@@ -67,9 +67,14 @@
           <!-- Benefit 1: Hasta 8 Años de Garantía -->
           <div class="benefit-card text-center">
             <div class="benefit-icon mb-2 mb-md-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="svg-benefit" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M32 6 C18 6 12 12 12 28 C12 44 26 54 32 58 C38 54 52 44 52 28 C52 12 46 6 32 6 Z" stroke="white" fill="none" stroke-linejoin="round"/>
-                <text x="32" y="38" font-family="'Inter', sans-serif" font-weight="900" font-size="22" fill="white" text-anchor="middle">8</text>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="svg-benefit" fill="none">
+                <!-- Shield shape with gold border -->
+                <path d="M24 5L9 11v13c0 9.8 6.4 19 15 21.5 8.6-2.5 15-11.7 15-21.5V11L24 5z" fill="rgba(229, 169, 60, 0.12)" stroke="#e5a93c" stroke-width="2.2" stroke-linejoin="round"/>
+                <!-- Central medal / badge with 8 -->
+                <circle cx="24" cy="22" r="8" stroke="#ffffff" stroke-width="1.8" fill="rgba(0, 12, 26, 0.8)"/>
+                <text x="24" y="26.5" font-family="'Inter', sans-serif" font-weight="900" font-size="12.5" fill="#e5a93c" text-anchor="middle">8</text>
+                <!-- Ribbon -->
+                <path d="M20.5 32l3.5-2 3.5 2v-4h-7v4z" fill="#e5a93c"/>
               </svg>
             </div>
             <h5 class="benefit-title-text text-uppercase mb-1 mb-md-2">HASTA 8 AÑOS DE GARANTÍA</h5>
@@ -79,8 +84,14 @@
           <!-- Benefit 2: Bajo Mantenimiento -->
           <div class="benefit-card text-center">
             <div class="benefit-icon mb-2 mb-md-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-benefit" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="svg-benefit" fill="none">
+                <!-- Gear base -->
+                <circle cx="24" cy="24" r="19" fill="rgba(229, 169, 60, 0.1)" stroke="rgba(229, 169, 60, 0.3)" stroke-width="1.5"/>
+                <!-- Cog teeth indicators -->
+                <path d="M24 8v3m0 26v3m16-16h-3M11 24H8m22.6-8.6l-2.1 2.1m-15 15l-2.1 2.1m0-19.2l2.1 2.1m15 15l2.1 2.1" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" stroke-linecap="round"/>
+                <!-- Precision Wrench -->
+                <path d="M16 32l9-9m3-3l3.5-3.5a4 4 0 0 1 5.7 5.7L33.7 25.7a4 4 0 0 1-5.7 0l-1-1" stroke="#e5a93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="16" cy="32" r="2.5" fill="#ffffff"/>
               </svg>
             </div>
             <h5 class="benefit-title-text text-uppercase mb-1 mb-md-2">BAJO MANTENIMIENTO</h5>
@@ -90,12 +101,16 @@
           <!-- Benefit 3: Soporte Nacional -->
           <div class="benefit-card text-center">
             <div class="benefit-icon mb-2 mb-md-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-benefit" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5z"/>
-                <path d="M17 16H7a4 4 0 0 0-4 4v2h18v-2a4 4 0 0 0-4-4z"/>
-                <path d="M21 11.5a2.5 2.5 0 0 1-2.5 2.5h-1.5v-5h1.5a2.5 2.5 0 0 1 2.5 2.5z"/>
-                <path d="M3 11.5a2.5 2.5 0 0 0 2.5 2.5h1.5v-5H5.5A2.5 2.5 0 0 0 3 11.5z"/>
-                <path d="M17.5 14c.5 1 .5 2 0 3h-2.5"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="svg-benefit" fill="none">
+                <!-- Outer subtle glow circle -->
+                <circle cx="24" cy="24" r="19" fill="rgba(229, 169, 60, 0.1)" stroke="rgba(229, 169, 60, 0.3)" stroke-width="1.5"/>
+                <!-- Professional Headset -->
+                <path d="M14 24c0-5.5 4.5-10 10-10s10 4.5 10 10v4a3 3 0 0 1-3 3h-1.5v-7h2.5v-1c0-4.4-3.6-7-8-7s-8 2.6-8 7v1h2.5v7H17a3 3 0 0 1-3-3v-4z" fill="rgba(229, 169, 60, 0.15)" stroke="#e5a93c" stroke-width="2.2" stroke-linejoin="round"/>
+                <!-- Mic stem -->
+                <path d="M29 33v2a3.5 3.5 0 0 1-3.5 3.5h-3.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="21" cy="38.5" r="2" fill="#e5a93c"/>
+                <!-- Broadcast / signal arc -->
+                <path d="M36 18a14 14 0 0 1 0 12" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
               </svg>
             </div>
             <h5 class="benefit-title-text text-uppercase mb-1 mb-md-2">SOPORTE NACIONAL</h5>
@@ -211,17 +226,32 @@ export default {
 }
 
 .benefit-icon {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(229, 169, 60, 0.08);
+  border: 1px solid rgba(229, 169, 60, 0.2);
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.benefit-card:hover .benefit-icon {
+  background: rgba(229, 169, 60, 0.15);
+  border-color: rgba(229, 169, 60, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(229, 169, 60, 0.25);
 }
 
 .svg-benefit {
-  width: auto;
-  height: 38px;
-  color: #ffffff;
+  width: 34px;
+  height: 34px;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover .svg-benefit {
+  transform: scale(1.08);
 }
 
 .benefit-title-text {
