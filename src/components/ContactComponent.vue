@@ -41,159 +41,22 @@
                 <i class="fa-solid fa-shield-halved text-yellow"></i>
               </div>
               <div>
-                <h4 class="benefit-title m-0">Respaldo y Garantía Waschée</h4>
+                <h4 class="benefit-title m-0">Respaldo y Garantía Waschee</h4>
                 <p class="benefit-desc m-0">Equipos de grado industrial protegidos por hasta 8 años.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Right Column: Interactive Form -->
+        <!-- Right Column: Bitrix24 Form Container -->
         <div class="col-lg-6">
           <div class="form-container-box p-3 p-sm-4 p-md-5">
+            <!-- Form Title -->
+            <h3 class="form-box-title text-center text-uppercase mb-4">Solicitar Cotización</h3>
             
-            <!-- Success Message Box -->
-            <div v-if="isSuccess" class="success-message-box py-4 py-md-5 text-center d-flex flex-column align-items-center justify-content-center gap-3">
-              <div class="success-checkmark-pulse mb-2">
-                <i class="fa-solid fa-circle-check fa-4x text-yellow"></i>
-              </div>
-              <h3 class="success-title m-0 text-uppercase">¡Envío Exitoso!</h3>
-              <p class="success-desc m-0">
-                Tu mensaje ha sido recibido de forma correcta.<br />
-                Redirigiéndote a la página de agradecimiento...
-              </p>
-              <!-- Animated Loading Progress Bar -->
-              <div class="progress-bar-container mt-3">
-                <div class="progress-bar-fill"></div>
-              </div>
+            <div ref="b24Container" class="b24-wrapper w-100">
+              <!-- Bitrix24 Script is dynamically injected here -->
             </div>
-
-            <!-- Main Form -->
-            <div v-else>
-              <h3 class="form-box-title text-center text-uppercase mb-4">Solicitar Cotización</h3>
-              
-              <!-- Server Error Alert -->
-              <div v-if="serverError" class="alert-error-custom mb-3 d-flex align-items-center gap-2">
-                <i class="fa-solid fa-circle-exclamation flex-shrink-0"></i>
-                <span>{{ serverError }}</span>
-              </div>
-
-              <form @submit.prevent="handleSubmit" class="contact-form d-flex flex-column gap-3" novalidate>
-                <!-- Name Input -->
-                <div class="form-group">
-                  <label for="name" class="form-label">Nombre Completo *</label>
-                  <div class="input-wrapper">
-                    <span class="input-icon"><i class="fa-solid fa-user"></i></span>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      v-model="form.name" 
-                      @blur="validateField('name')"
-                      @input="clearError('name')"
-                      class="form-control-custom" 
-                      :class="{ 'is-invalid-custom': errors.name }"
-                      placeholder="Ej. Juan Pérez" 
-                      :disabled="isSubmitting"
-                      required 
-                    />
-                  </div>
-                  <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
-                </div>
-
-                <!-- Phone Input -->
-                <div class="form-group">
-                  <label for="phone" class="form-label">Teléfono de Contacto *</label>
-                  <div class="input-wrapper">
-                    <span class="input-icon"><i class="fa-solid fa-phone"></i></span>
-                    <input 
-                      type="tel" 
-                      id="phone" 
-                      v-model="form.phone" 
-                      @blur="validateField('phone')"
-                      @input="clearError('phone')"
-                      class="form-control-custom" 
-                      :class="{ 'is-invalid-custom': errors.phone }"
-                      placeholder="Ej. 55 1234 5678" 
-                      :disabled="isSubmitting"
-                      required 
-                    />
-                  </div>
-                  <span v-if="errors.phone" class="error-message">{{ errors.phone }}</span>
-                </div>
-
-                <!-- Email Input -->
-                <div class="form-group">
-                  <label for="email" class="form-label">Correo Electrónico *</label>
-                  <div class="input-wrapper">
-                    <span class="input-icon"><i class="fa-solid fa-envelope"></i></span>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      v-model="form.email" 
-                      @blur="validateField('email')"
-                      @input="clearError('email')"
-                      class="form-control-custom" 
-                      :class="{ 'is-invalid-custom': errors.email }"
-                      placeholder="Ej. juan@correo.com" 
-                      :disabled="isSubmitting"
-                      required 
-                    />
-                  </div>
-                  <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
-                </div>
-
-                <!-- Sector Selection -->
-                <div class="form-group">
-                  <label for="sector" class="form-label">Giro o Sector *</label>
-                  <div class="input-wrapper">
-                    <span class="input-icon"><i class="fa-solid fa-hotel"></i></span>
-                    <select 
-                      id="sector" 
-                      v-model="form.sector" 
-                      @change="validateField('sector')"
-                      class="form-control-custom select-custom" 
-                      :class="{ 'is-invalid-custom': errors.sector }"
-                      :disabled="isSubmitting"
-                      required
-                    >
-                      <option value="" disabled>Selecciona tu sector</option>
-                      <option value="hoteleria">Hotelería / Hospedaje</option>
-                      <option value="hospitales">Hospitales / Sector Salud</option>
-                      <option value="mineria">Minería / Campamentos</option>
-                      <option value="industria">Industria / Maquila</option>
-                      <option value="lavanderia">Lavandería Comercial / Autoservicio</option>
-                      <option value="otro">Otro Giro</option>
-                    </select>
-                  </div>
-                  <span v-if="errors.sector" class="error-message">{{ errors.sector }}</span>
-                </div>
-
-                <!-- Comments Input -->
-                <div class="form-group">
-                  <label for="message" class="form-label">Mensaje o Comentarios (Opcional)</label>
-                  <textarea 
-                    id="message" 
-                    v-model="form.message" 
-                    class="form-control-custom textarea-custom" 
-                    rows="3" 
-                    placeholder="Cuéntanos más sobre las necesidades de tu operación..."
-                    :disabled="isSubmitting"
-                  ></textarea>
-                </div>
-
-                <!-- Submit Button -->
-                <button 
-                  type="submit" 
-                  class="btn btn-form-submit w-100 d-flex align-items-center justify-content-center gap-2 mt-2"
-                  :disabled="isSubmitting"
-                >
-                  <span v-if="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  <span>{{ isSubmitting ? 'ENVIANDO SOLICITUD...' : 'ENVIAR SOLICITUD' }}</span>
-                  <i v-if="!isSubmitting" class="fa-solid fa-paper-plane"></i>
-                </button>
-              </form>
-            </div>
-
           </div>
         </div>
 
@@ -203,131 +66,39 @@
 </template>
 
 <script>
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://api-waschee-promo-lb.test/api/contact';
-
 export default {
   name: 'ContactComponent',
-  data() {
-    return {
-      form: {
-        name: '',
-        phone: '',
-        email: '',
-        sector: '',
-        message: ''
-      },
-      errors: {
-        name: '',
-        phone: '',
-        email: '',
-        sector: ''
-      },
-      isSubmitting: false,
-      serverError: '',
-      isSuccess: false
-    };
-  },
-  methods: {
-    validateField(field) {
-      if (field === 'name') {
-        if (!this.form.name.trim()) {
-          this.errors.name = 'El nombre completo es requerido.';
-        } else if (this.form.name.trim().length < 3) {
-          this.errors.name = 'El nombre debe tener al menos 3 caracteres.';
-        } else {
-          this.errors.name = '';
-        }
+  mounted() {
+    if (this.$refs.b24Container) {
+      // Prevent duplicate script execution
+      const existingScript = this.$refs.b24Container.querySelector('script[data-b24-form="inline/22/ofcvp8"]');
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.setAttribute('data-b24-form', 'inline/22/ofcvp8');
+        script.setAttribute('data-skip-moving', 'true');
+        script.innerHTML = `(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn.bitrix24.mx/b36033689/crm/form/loader_22.js');`;
+        this.$refs.b24Container.appendChild(script);
       }
 
-      if (field === 'phone') {
-        const cleanPhone = this.form.phone.replace(/[^0-9]/g, '');
-        if (!this.form.phone) {
-          this.errors.phone = 'El teléfono es requerido.';
-        } else if (cleanPhone.length !== 10) {
-          this.errors.phone = 'Ingresa un número telefónico válido a 10 dígitos.';
-        } else {
-          this.errors.phone = '';
-        }
-      }
-
-      if (field === 'email') {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!this.form.email) {
-          this.errors.email = 'El correo electrónico es requerido.';
-        } else if (!emailPattern.test(this.form.email)) {
-          this.errors.email = 'Ingresa un correo electrónico válido.';
-        } else {
-          this.errors.email = '';
-        }
-      }
-
-      if (field === 'sector') {
-        if (!this.form.sector) {
-          this.errors.sector = 'Selecciona un giro o sector.';
-        } else {
-          this.errors.sector = '';
-        }
-      }
-    },
-    clearError(field) {
-      this.errors[field] = '';
-      this.serverError = '';
-    },
-    validateForm() {
-      this.validateField('name');
-      this.validateField('phone');
-      this.validateField('email');
-      this.validateField('sector');
-
-      return !this.errors.name && !this.errors.phone && !this.errors.email && !this.errors.sector;
-    },
-    async handleSubmit() {
-      if (!this.validateForm() || this.isSubmitting) return;
-
-      this.isSubmitting = true;
-      this.serverError = '';
-
-      const payload = {
-        full_name: this.form.name.trim(),
-        phone: this.form.phone.trim(),
-        email: this.form.email.trim(),
-        sector: this.form.sector,
-        message: this.form.message.trim() || 'Solicitud de información sobre promoción Dúo Industrial'
+      // Continuous DOM reinforcement to ensure 100% width on every Bitrix container
+      const enforceFullWidth = () => {
+        if (!this.$refs.b24Container) return;
+        const allElements = this.$refs.b24Container.querySelectorAll('div, form, fieldset, [class*="b24-"]');
+        allElements.forEach((el) => {
+          if (!el.classList.contains('b24-form-btn-text') && !el.classList.contains('b24-form-sign')) {
+            el.style.setProperty('width', '100%', 'important');
+            el.style.setProperty('max-width', '100%', 'important');
+            el.style.setProperty('min-width', '100%', 'important');
+            el.style.setProperty('box-sizing', 'border-box', 'important');
+          }
+        });
       };
 
-      try {
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
+      const observer = new MutationObserver(enforceFullWidth);
+      observer.observe(this.$refs.b24Container, { childList: true, subtree: true, attributes: true });
 
-        const data = await response.json();
-
-        if (response.ok && data.success) {
-          this.isSuccess = true;
-          // Wait 3 seconds then redirect to /gracias
-          setTimeout(() => {
-            window.location.href = '/gracias';
-          }, 3000);
-        } else if (response.status === 422 && data.errors) {
-          if (data.errors.full_name) this.errors.name = data.errors.full_name[0];
-          if (data.errors.phone) this.errors.phone = data.errors.phone[0];
-          if (data.errors.email) this.errors.email = data.errors.email[0];
-          if (data.errors.sector) this.errors.sector = data.errors.sector[0];
-          this.serverError = data.message || 'Por favor verifica los datos ingresados.';
-        } else {
-          this.serverError = data.message || 'Ocurrió un error al enviar el formulario. Por favor intenta nuevamente.';
-        }
-      } catch (error) {
-        console.error('Error al enviar formulario:', error);
-        this.serverError = 'No se pudo conectar con el servidor. Verifica tu conexión e inténtalo nuevamente.';
-      } finally {
-        this.isSubmitting = false;
-      }
+      const intervalId = setInterval(enforceFullWidth, 250);
+      setTimeout(() => clearInterval(intervalId), 15000);
     }
   }
 };
@@ -341,32 +112,41 @@ export default {
   color: #ffffff;
   padding: 70px 0;
   font-family: 'Inter', sans-serif;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
 }
 
-.text-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+/* Subtle background radial glow */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(229, 169, 60, 0.04) 0%, rgba(0, 12, 26, 0) 70%);
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
-/* Badge and Title */
+/* Badge accent */
 .badge-accent {
-  background-color: rgba(229, 169, 60, 0.1);
+  display: inline-block;
+  background-color: rgba(229, 169, 60, 0.12);
   color: #e5a93c;
   font-weight: 800;
   font-size: 13px;
   letter-spacing: 0.1em;
-  padding: 6px 16px;
+  padding: 6px 14px;
   border-radius: 6px;
-  display: inline-block;
-  border: 1px solid rgba(229, 169, 60, 0.25);
+  border-left: 3px solid #e5a93c;
+  text-transform: uppercase;
 }
 
 .section-title {
-  font-size: clamp(24px, 3.5vw, 38px);
+  font-size: clamp(26px, 3.2vw, 42px);
   font-weight: 900;
+  letter-spacing: -0.01em;
   line-height: 1.15;
   color: #ffffff;
 }
@@ -376,7 +156,7 @@ export default {
 }
 
 .section-description {
-  font-size: 15px;
+  font-size: clamp(14px, 1.2vw, 16px);
   color: #c9d1d9;
   line-height: 1.5;
   max-width: 500px;
@@ -422,213 +202,22 @@ export default {
   background: rgba(3, 20, 42, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
   min-height: 490px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.form-box-title {
-  font-size: 20px;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.02em;
-}
-
-/* Form inputs & styles */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.form-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #a5b4fc;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.input-wrapper {
   position: relative;
   width: 100%;
 }
 
-.input-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 14px;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-}
-
-.form-control-custom {
-  width: 100%;
-  padding: 12px 16px 12px 42px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  color: #ffffff;
-  font-size: 14.5px;
-  font-family: inherit;
-  transition: all 0.3s ease;
-}
-
-.form-control-custom:focus {
-  outline: none;
-  border-color: #e5a93c;
-  background-color: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 10px rgba(229, 169, 60, 0.15);
-}
-
-/* Custom error highlight styles */
-.form-control-custom.is-invalid-custom {
-  border-color: #ef4444 !important;
-  background-color: rgba(239, 68, 68, 0.03);
-  box-shadow: 0 0 10px rgba(239, 68, 68, 0.15) !important;
-}
-
-.error-message {
-  color: #ef4444;
-  font-size: 11px;
-  font-weight: 600;
-  margin-top: 2px;
-  letter-spacing: 0.01em;
-}
-
-.alert-error-custom {
-  background-color: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #fca5a5;
-  font-size: 12.5px;
-  font-weight: 600;
-  padding: 10px 14px;
-  border-radius: 10px;
-  line-height: 1.4;
-}
-
-/* Select element customization */
-.select-custom {
-  appearance: none;
-  cursor: pointer;
-}
-
-.select-custom option {
-  background-color: #03142a;
-  color: #ffffff;
-}
-
-.textarea-custom {
-  padding-left: 16px;
-}
-
-/* Submit Button */
-.btn-form-submit {
-  background-color: #e5a93c;
-  color: #000c1a;
-  font-weight: 800;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  border-radius: 10px;
-  padding: 14px 0;
-  border: none;
-  box-shadow: 0 4px 15px rgba(229, 169, 60, 0.2);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  cursor: pointer;
-}
-
-.btn-form-submit:hover {
-  background-color: #f0b84c;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(229, 169, 60, 0.35);
-}
-
-.btn-form-submit:active {
-  transform: translateY(0);
-}
-
-/* Success State Styles */
-.success-message-box {
-  animation: fadeIn 0.4s ease forwards;
-}
-
-.success-checkmark-pulse {
-  animation: bounceScale 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.success-title {
-  font-size: 24px;
+.form-box-title {
+  font-size: 22px;
   font-weight: 900;
   color: #ffffff;
-}
-
-.success-desc {
-  font-size: 14px;
-  color: #c9d1d9;
-  line-height: 1.5;
-}
-
-/* 3-second animated progress bar */
-.progress-bar-container {
-  width: 100%;
-  max-width: 280px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  width: 0%;
-  height: 100%;
-  background-color: #e5a93c;
-  animation: loadProgress 3s linear forwards;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounceScale {
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes loadProgress {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
+  letter-spacing: 0.02em;
 }
 
 /* Responsive media queries */
@@ -661,9 +250,355 @@ export default {
     padding: 20px 14px !important;
     min-height: auto;
   }
+}
+</style>
 
-  .form-box-title {
-    font-size: 18px;
-  }
+<!-- Pixel-Perfect 100% Full Width Bitrix24 Form Overrides -->
+<style>
+/* 1. Force 100% Width on all containers, rows, columns */
+.form-container-box div,
+.form-container-box form,
+.form-container-box fieldset,
+.form-container-box .b24-wrapper,
+.form-container-box .b24-form,
+.form-container-box .b24-form-wrapper,
+.form-container-box .b24-form-fields,
+.form-container-box .b24-form-row,
+.form-container-box .b24-form-col,
+.form-container-box [class*="b24-form-col"],
+.form-container-box [class*="b24-form-row"],
+.form-container-box .b24-form-field,
+.form-container-box [class*="b24-form-field"],
+.form-container-box .b24-form-control-container,
+.form-container-box .b24-form-control-wrapper,
+.form-container-box .b24-form-control,
+.form-container-box [class*="b24-form-control"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  flex: 1 1 100% !important;
+  box-sizing: border-box !important;
+}
+
+.form-container-box .b24-form,
+.form-container-box .b24-form-wrapper {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.form-container-box .b24-form-row,
+.form-container-box .b24-form-col,
+.form-container-box [class*="b24-form-col"],
+.form-container-box [class*="b24-form-row"] {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2. Hide unwanted language selector ("la"), translate widgets, and floating overlays */
+.form-container-box select,
+.form-container-box .b24-form-control-select,
+.form-container-box .b24-form-field-select,
+.form-container-box [class*="language"],
+.form-container-box [class*="lang-select"],
+.form-container-box [class*="goog-"],
+.form-container-box img[src*="google"],
+.form-container-box .VIpgJd-ZVi9od-ORHb-OEVmcd,
+.form-container-box .b24-form-fields .b24-form-sign,
+.form-container-box .b24-form-field [class*="abuse"],
+.form-container-box .b24-form-fields [class*="abuse"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 3. Field Row: 100% Width */
+.form-container-box .b24-form-field {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 14px !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  display: block !important;
+}
+
+/* 4. Unified Input Box with Labels INSIDE at the top: 100% Width */
+.form-container-box .b24-form-control-container,
+.form-container-box .b24-form-control-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  position: relative !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 10px !important;
+  padding: 8px 16px 7px 16px !important;
+  min-height: 58px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 0.25s ease !important;
+  box-shadow: none !important;
+}
+
+/* Focused Box */
+.form-container-box .b24-form-control-container:focus-within,
+.form-container-box .b24-form-control-wrapper:focus-within {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: #e5a93c !important;
+  box-shadow: 0 0 12px rgba(229, 169, 60, 0.25) !important;
+}
+
+/* Mensaje Textarea Box */
+.form-container-box .b24-form-field:has(textarea) .b24-form-control-container,
+.form-container-box .b24-form-control-container:has(textarea) {
+  min-height: 96px !important;
+  justify-content: flex-start !important;
+  padding-top: 10px !important;
+}
+
+/* 5. Labels INSIDE the input box */
+.form-container-box .b24-form-control-label,
+.form-container-box .b24-form-field-label,
+.form-container-box label {
+  order: 1 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 3px 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  position: static !important;
+  transform: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  line-height: 1.1 !important;
+  width: 100% !important;
+}
+
+/* Required Asterisk */
+.form-container-box .b24-form-field-label-required,
+.form-container-box label span,
+.form-container-box label span[style*="color"] {
+  color: #e5a93c !important;
+  font-weight: 900 !important;
+  display: inline !important;
+}
+
+/* 6. Inner Input Area */
+.form-container-box .b24-form-control,
+.form-container-box .b24-form-control-string,
+.form-container-box .b24-form-control-phone,
+.form-container-box .b24-form-control-email,
+.form-container-box .b24-form-control-text {
+  order: 2 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Raw Inputs / Textareas */
+.form-container-box input,
+.form-container-box textarea,
+.form-container-box .b24-form-control input,
+.form-container-box .b24-form-control textarea {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 14.5px !important;
+  font-weight: 500 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+  line-height: 1.3 !important;
+}
+
+.form-container-box textarea,
+.form-container-box .b24-form-control textarea {
+  min-height: 50px !important;
+  resize: vertical !important;
+}
+
+.form-container-box input::placeholder,
+.form-container-box textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35) !important;
+  font-size: 13.5px !important;
+}
+
+/* 7. Phone Prefix / Code (+52) */
+.form-container-box .b24-form-control-phone {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+.form-container-box .b24-form-control-phone span,
+.form-container-box [class*="phone"] span {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+}
+
+/* 8. Subtitle / Hint ("Código del país + número a 10 dígitos") - High contrast visible */
+.form-container-box .b24-form-field-description,
+.form-container-box .b24-form-field-hint,
+.form-container-box .b24-form-control-comment,
+.form-container-box [class*="description"],
+.form-container-box [class*="hint"],
+.form-container-box [class*="comment"],
+.form-container-box .b24-form-field small {
+  color: #e2e8f0 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  margin-top: 6px !important;
+  margin-left: 2px !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+  border: none !important;
+  opacity: 0.95 !important;
+}
+
+/* 9. Errors & Alerts */
+.form-container-box .b24-form-field-alert {
+  color: #f87171 !important;
+  font-size: 11.5px !important;
+  margin-top: 5px !important;
+  margin-left: 2px !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* 10. Button (100% Width, Solid, Centered text) */
+.form-container-box .b24-form-btn-container,
+.form-container-box .b24-form-btn-block {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  display: block !important;
+  margin-top: 20px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.form-container-box button.b24-form-btn,
+.form-container-box button[type="submit"] {
+  background-color: #e5a93c !important;
+  color: #000c1a !important;
+  font-weight: 900 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  border-radius: 10px !important;
+  padding: 14px 20px !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(229, 169, 60, 0.25) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+.form-container-box button.b24-form-btn:hover,
+.form-container-box button[type="submit"]:hover {
+  background-color: #f0b84c !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(229, 169, 60, 0.4) !important;
+  color: #000c1a !important;
+}
+
+.form-container-box button.b24-form-btn *,
+.form-container-box button[type="submit"] * {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #000c1a !important;
+  font-weight: 900 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  width: 100% !important;
+  text-align: center !important;
+  line-height: 1 !important;
+}
+
+/* 11. High-Contrast Abuse Link ("Reportar un abuso") at the very bottom */
+.form-container-box .b24-wrapper > .b24-form-sign,
+.form-container-box .b24-form-wrapper > .b24-form-sign,
+.form-container-box .b24-form-wrapper > a[href*="abuse"],
+.form-container-box .b24-form-sign,
+.form-container-box a[href*="abuse"] {
+  color: #9cb1c9 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin-top: 14px !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  border: none !important;
+  opacity: 0.85 !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-container-box a[href*="abuse"]:hover,
+.form-container-box .b24-form-sign:hover {
+  color: #e5a93c !important;
+  opacity: 1 !important;
 }
 </style>

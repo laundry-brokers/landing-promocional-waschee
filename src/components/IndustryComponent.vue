@@ -1,5 +1,5 @@
 <template>
-  <section class="industry-section">
+  <section class="industry-section" :style="industryBgStyle">
     <div class="container py-4">
       <div class="row align-items-center">
         <!-- Content Column (Left Side) -->
@@ -31,7 +31,7 @@
           
           <!-- Experience Badge -->
           <div class="badge-experience d-flex align-items-center justify-content-center justify-content-lg-start mt-2">
-            <img src="/industrial/beneficios_waschee.webp" alt="MÁS DE 30 AÑOS DE EXPERIENCIA RESPALDAN NUESTRA INGENIERÍA" class="badge-img" />
+            <img :src="badgeSrc" alt="MÁS DE 30 AÑOS DE EXPERIENCIA RESPALDAN NUESTRA INGENIERÍA" class="badge-img" />
           </div>
         </div>
         
@@ -40,7 +40,7 @@
         
         <!-- Mobile Image Column (Only visible on mobile/tablet) -->
         <div class="col-lg-6 d-block d-lg-none mt-4 text-center">
-          <img src="/industrial/background_banner_inicial_waschee.webp" alt="Equipos Industriales Waschée" class="img-fluid mobile-industry-img" />
+          <img :src="mobileBgSrc" alt="Equipos Industriales Waschée" class="img-fluid mobile-industry-img" />
         </div>
       </div>
     </div>
@@ -49,7 +49,25 @@
 
 <script>
 export default {
-  name: 'IndustryComponent'
+  name: 'IndustryComponent',
+  data() {
+    return {
+      baseUrl: (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/'
+    };
+  },
+  computed: {
+    industryBgStyle() {
+      return {
+        backgroundImage: `url(${this.baseUrl}industrial/background_banner_inicial_waschee.webp)`
+      };
+    },
+    badgeSrc() {
+      return `${this.baseUrl}industrial/beneficios_waschee.webp`;
+    },
+    mobileBgSrc() {
+      return `${this.baseUrl}industrial/background_banner_inicial_waschee.webp`;
+    }
+  }
 };
 </script>
 
@@ -58,7 +76,6 @@ export default {
 
 .industry-section {
   position: relative;
-  background-image: url('/industrial/background_banner_inicial_waschee.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

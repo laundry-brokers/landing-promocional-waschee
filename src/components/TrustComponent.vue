@@ -1,5 +1,5 @@
 <template>
-  <section class="trust-section" id="garantia">
+  <section class="trust-section" id="garantia" :style="trustBgStyle">
     <div class="container py-2 py-lg-3">
       <div class="row align-items-center">
         <!-- Text Content Column -->
@@ -15,7 +15,7 @@
         
         <!-- Features List Image Column -->
         <div class="col-lg-6 mt-3 mt-lg-0 text-center">
-          <img src="/confianza/beneficios_waschee_1.webp" alt="Beneficios Waschée" class="img-fluid benefits-list-img" />
+          <img :src="benefitsSrc" alt="Beneficios Waschée" class="img-fluid benefits-list-img" />
         </div>
         
         <!-- Empty Spacer Column for background machine on desktop -->
@@ -23,7 +23,7 @@
         
         <!-- Mobile Machine Image Column (visible on mobile/tablet only) -->
         <div class="col-12 d-block d-lg-none mt-3 text-center">
-          <img src="/hero/banner3_waschee_todo_incluido_DCLA.webp" alt="Ingeniería Waschée" class="img-fluid mobile-machine-img" />
+          <img :src="mobileMachineSrc" alt="Ingeniería Waschée" class="img-fluid mobile-machine-img" />
         </div>
       </div>
     </div>
@@ -32,7 +32,25 @@
 
 <script>
 export default {
-  name: 'TrustComponent'
+  name: 'TrustComponent',
+  data() {
+    return {
+      baseUrl: (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/'
+    };
+  },
+  computed: {
+    trustBgStyle() {
+      return {
+        backgroundImage: `url(${this.baseUrl}hero/banner3_waschee_todo_incluido_DCLA.webp)`
+      };
+    },
+    benefitsSrc() {
+      return `${this.baseUrl}confianza/beneficios_waschee_1.webp`;
+    },
+    mobileMachineSrc() {
+      return `${this.baseUrl}hero/banner3_waschee_todo_incluido_DCLA.webp`;
+    }
+  }
 };
 </script>
 
@@ -41,7 +59,6 @@ export default {
 
 .trust-section {
   position: relative;
-  background-image: url('/hero/banner3_waschee_todo_incluido_DCLA.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

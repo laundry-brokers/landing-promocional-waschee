@@ -2,8 +2,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark custom-navbar py-3">
     <div class="container-fluid px-lg-5">
       <!-- Logo -->
-      <a class="navbar-brand d-flex align-items-center" href="/">
-        <img src="/logos/Logo_Laundrybrokers.png" alt="Waschée" class="logo-img" style="width: 300px; height: auto;" />
+      <a class="navbar-brand d-flex align-items-center" :href="baseUrl">
+        <img :src="logoSrc" alt="Waschée" class="logo-img" style="width: 300px; height: auto;" />
       </a>
       
       <!-- Hamburger Button (Mobile) -->
@@ -26,7 +26,7 @@
       >
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center gap-1 gap-lg-4">
           <li class="nav-item">
-            <a class="nav-link nav-text" href="/" @click="closeMenu">INICIO</a>
+            <a class="nav-link nav-text" :href="baseUrl" @click="closeMenu">INICIO</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-text" href="https://waschee.com/mx/catalogo" target="_blank" @click="closeMenu">EQUIPOS</a>
@@ -55,8 +55,14 @@ export default {
   name: 'NavbarComponente',
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
+      baseUrl: (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/'
     };
+  },
+  computed: {
+    logoSrc() {
+      return `${this.baseUrl}logos/Logo_Laundrybrokers.png`;
+    }
   },
   methods: {
     toggleMenu() {

@@ -6,35 +6,35 @@
         <!-- Feature Item 1 -->
         <div class="feature-item reveal-child">
           <div class="icon-wrapper">
-            <img src="/points/ocho_anios_garantia_aschee.webp" alt="8 Años de Garantía" class="feature-icon" />
+            <img :src="icons.garantia" alt="8 Años de Garantía" class="feature-icon" />
           </div> 
         </div>
         
         <!-- Feature Item 2 -->
         <div class="feature-item reveal-child">
           <div class="icon-wrapper">
-            <img src="/points/Construcción_industrial_acero_304.webp" alt="Construcción Industrial Acero 304" class="feature-icon" />
+            <img :src="icons.acero" alt="Construcción Industrial Acero 304" class="feature-icon" />
           </div>
         </div>
         
         <!-- Feature Item 3 -->
         <div class="feature-item reveal-child">
           <div class="icon-wrapper">
-            <img src="/points/maxima_eficiencia_aschee.webp" alt="Máxima Eficiencia" class="feature-icon" />
+            <img :src="icons.eficiencia" alt="Máxima Eficiencia" class="feature-icon" />
           </div>
         </div>
         
         <!-- Feature Item 4 -->
         <div class="feature-item reveal-child">
           <div class="icon-wrapper">
-            <img src="/points/bajo_mantenimiento.webp" alt="Bajo Mantenimiento" class="feature-icon" />
+            <img :src="icons.mantenimiento" alt="Bajo Mantenimiento" class="feature-icon" />
           </div>
         </div>
         
         <!-- Feature Item 5 -->
         <div class="feature-item reveal-child">
           <div class="icon-wrapper">
-            <img src="/points/soporte_nacional.webp" alt="Soporte Nacional" class="feature-icon" />
+            <img :src="icons.soporte" alt="Soporte Nacional" class="feature-icon" />
           </div>
         </div>
         
@@ -45,7 +45,19 @@
 
 <script>
 export default {
-  name: 'FeaturesComponent'
+  name: 'FeaturesComponent',
+  data() {
+    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/';
+    return {
+      icons: {
+        garantia: `${base}points/ocho_anios_garantia_aschee.webp`,
+        acero: `${base}points/Construcción_industrial_acero_304.webp`,
+        eficiencia: `${base}points/maxima_eficiencia_aschee.webp`,
+        mantenimiento: `${base}points/bajo_mantenimiento.webp`,
+        soporte: `${base}points/soporte_nacional.webp`
+      }
+    };
+  }
 };
 </script>
 

@@ -1,5 +1,6 @@
 ---
 import "bootstrap/dist/css/bootstrap.min.css";
+const baseUrl = (import.meta.env.BASE_URL || "/").replace(/\/$/, "") + "/";
 ---
 
 <!doctype html>
@@ -7,8 +8,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/logos/favicon_lb.jpg" />
-		<link rel="icon" href="/logos/favicon_lb.jpg" />
+		<link
+			rel="icon"
+			type="image/jpeg"
+			href={`${baseUrl}logos/favicon_lb.jpg`}
+		/>
+		<link rel="shortcut icon" href={`${baseUrl}logos/favicon_lb.jpg`} />
 		<meta name="generator" content={Astro.generator} />
 		<link
 			rel="stylesheet"
@@ -18,6 +23,348 @@ import "bootstrap/dist/css/bootstrap.min.css";
 			referrerpolicy="no-referrer"
 		/>
 		<title>Laundry Brokers - Todo incluido</title>
+		<!-- Meta Pixel Code -->
+		<script>
+			!(function (f, b, e, v, n, t, s) {
+				if (f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod
+						? n.callMethod.apply(n, arguments)
+						: n.queue.push(arguments);
+				};
+				if (!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = "2.0";
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s);
+			})(
+				window,
+				document,
+				"script",
+				"https://connect.facebook.net/en_US/fbevents.js",
+			);
+			fbq("init", "622081123241956");
+			fbq("track", "PageView");
+		</script>
+		<noscript
+			><img
+				height="1"
+				width="1"
+				style="display:none"
+				src="https://www.facebook.com/tr?id=622081123241956&ev=PageView&noscript=1"
+			/></noscript
+		>
+		<!-- End Meta Pixel Code -->
+
+		<script>
+			// Campana: Promo Agosto - Todo incluido Waschee
+			(function () {
+				const params = new URLSearchParams(window.location.search);
+				const persistUtm = (param, storageKey) => {
+					const value = params.get(param);
+					if (value) {
+						sessionStorage.setItem(storageKey, value);
+					}
+				};
+				persistUtm("utm_campaign", "utm_campaign");
+				persistUtm("utm_source", "utm_source");
+				persistUtm("utm_term", "utm_term");
+				persistUtm("utm_medium", "utm_medium");
+				persistUtm("utm_content", "utm_content");
+				persistUtm("gclid", "gclid");
+				persistUtm("fbclid", "fbclid");
+			})();
+
+			(function () {
+				"use strict";
+
+				const DEFAULT_CAMPAIGN = "Promo Agosto - Todo incluido Waschee";
+				const DEFAULT_SOURCE = "Web";
+				const API_URL = "https://lglaundrylounge.com/api/track";
+				const URL_GRACIAS =
+					"https://laundry-brokers.com/todo-incluido/gracias-promocion-waschee/";
+
+				const SUBMITTED_KEY = "kronos_form_submitted";
+				const TRACKED_KEY = "kronos_form_tracked";
+				const SUBMITTED_AT_KEY = "kronos_form_submitted_at";
+
+				/**
+				 * Marca que realmente hubo un envío de formulario.
+				 */
+				function marcarFormularioEnviado() {
+					sessionStorage.setItem(SUBMITTED_KEY, "1");
+					sessionStorage.setItem(
+						SUBMITTED_AT_KEY,
+						Date.now().toString(),
+					);
+
+					// Permitimos una nueva conversión para este nuevo envío.
+					sessionStorage.removeItem(TRACKED_KEY);
+				}
+
+				/**
+				 * Detectamos el envío del formulario.
+				 */
+				document.addEventListener(
+					"submit",
+					function (event) {
+						const form = event.target;
+
+						if (!(form instanceof HTMLFormElement)) {
+							return;
+						}
+
+						marcarFormularioEnviado();
+					},
+					true,
+				);
+
+				/**
+				 * Comprobar si estamos exactamente en la página de gracias.
+				 */
+				function esPaginaGracias() {
+					if (!URL_GRACIAS) {
+						return false;
+					}
+
+					try {
+						const current = new URL(window.location.href);
+						const thanks = new URL(URL_GRACIAS);
+
+						return (
+							current.origin === thanks.origin &&
+							current.pathname.replace(/\/$/, "") ===
+								thanks.pathname.replace(/\/$/, "")
+						);
+					} catch (e) {
+						return false;
+					}
+				}
+
+				/**
+				 * Verificar si hubo un formulario enviado recientemente.
+				 */
+				function huboEnvioValido() {
+					const submitted = sessionStorage.getItem(SUBMITTED_KEY);
+
+					const submittedAt = parseInt(
+						sessionStorage.getItem(SUBMITTED_AT_KEY) || "0",
+						10,
+					);
+
+					if (submitted !== "1") {
+						return false;
+					}
+
+					/**
+					 * La redirección deberá ocurrir máximo
+					 * 10 minutos después del envío.
+					 */
+					const MAX_TIME = 10 * 60 * 1000;
+
+					if (!submittedAt || Date.now() - submittedAt > MAX_TIME) {
+						limpiarEnvio();
+
+						return false;
+					}
+
+					return true;
+				}
+
+				function limpiarEnvio() {
+					sessionStorage.removeItem(SUBMITTED_KEY);
+					sessionStorage.removeItem(SUBMITTED_AT_KEY);
+				}
+
+				/**
+				 * Registrar conversión.
+				 */
+				function verificarYEnviar() {
+					// 1. No estamos en /gracias.
+					if (!esPaginaGracias()) {
+						return;
+					}
+
+					// 2. Entró directamente a /gracias.
+					// NO registrar.
+					if (!huboEnvioValido()) {
+						console.log(
+							"Kronos: acceso directo a página de gracias. No se registra conversión.",
+						);
+
+						return;
+					}
+
+					// 3. La conversión ya fue registrada.
+					if (sessionStorage.getItem(TRACKED_KEY) === "1") {
+						console.log("Kronos: conversión ya registrada.");
+
+						return;
+					}
+
+					/**
+					 * Marcamos ANTES del fetch para impedir
+					 * que dos ejecuciones simultáneas disparen
+					 * dos conversiones.
+					 */
+					sessionStorage.setItem(TRACKED_KEY, "1");
+
+					const params = new URLSearchParams(window.location.search);
+
+					const nombreProducto = (
+						document.querySelector("h1")?.innerText ||
+						document.title
+					).substring(0, 250);
+
+					fetch(API_URL, {
+						method: "POST",
+
+						headers: {
+							"Content-Type": "application/json",
+							Accept: "application/json",
+							"X-Requested-With": "XMLHttpRequest",
+						},
+
+						body: JSON.stringify({
+							type: "formulario",
+
+							campaing:
+								sessionStorage.getItem("utm_campaign") ||
+								params.get("utm_campaign") ||
+								DEFAULT_CAMPAIGN,
+
+							fuente:
+								sessionStorage.getItem("utm_source") ||
+								params.get("utm_source") ||
+								DEFAULT_SOURCE,
+
+							producto: nombreProducto,
+
+							url_original:
+								document.referrer || window.location.href,
+
+							utm_term:
+								sessionStorage.getItem("utm_term") ||
+								params.get("utm_term") ||
+								null,
+
+							utm_medium:
+								sessionStorage.getItem("utm_medium") ||
+								params.get("utm_medium") ||
+								null,
+
+							utm_content:
+								sessionStorage.getItem("utm_content") ||
+								params.get("utm_content") ||
+								null,
+
+							gclid:
+								sessionStorage.getItem("gclid") ||
+								params.get("gclid") ||
+								null,
+
+							fbclid:
+								sessionStorage.getItem("fbclid") ||
+								params.get("fbclid") ||
+								null,
+
+							referer: document.referrer || null,
+						}),
+					})
+						.then(async (response) => {
+							if (!response.ok) {
+								throw new Error("HTTP " + response.status);
+							}
+
+							return response.json();
+						})
+						.then((data) => {
+							console.log(
+								"Kronos: formulario registrado correctamente.",
+								data,
+							);
+
+							/**
+							 * Eliminamos la bandera del envío.
+							 * Dejamos TRACKED_KEY para impedir
+							 * recargas duplicadas.
+							 */
+							limpiarEnvio();
+						})
+						.catch((error) => {
+							console.error(
+								"Kronos: error registrando formulario.",
+								error,
+							);
+
+							/**
+							 * Si falló realmente la API,
+							 * permitimos reintentar.
+							 */
+							sessionStorage.removeItem(TRACKED_KEY);
+						});
+				}
+
+				/**
+				 * Primera carga.
+				 */
+				if (
+					document.readyState === "complete" ||
+					document.readyState === "interactive"
+				) {
+					verificarYEnviar();
+				} else {
+					document.addEventListener(
+						"DOMContentLoaded",
+						verificarYEnviar,
+					);
+				}
+
+				/**
+				 * Soporte SPA / Framer.
+				 */
+				let lastUrl = window.location.href;
+
+				const observer = new MutationObserver(function () {
+					const currentUrl = window.location.href;
+
+					if (currentUrl !== lastUrl) {
+						lastUrl = currentUrl;
+
+						verificarYEnviar();
+					}
+				});
+
+				if (document.body) {
+					observer.observe(document.body, {
+						childList: true,
+						subtree: true,
+					});
+				}
+			})();
+		</script>
+		<!-- Google Tag Manager -->
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					"gtm.start": new Date().getTime(),
+					event: "gtm.js",
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, "script", "dataLayer", "GTM-KHD3JM6");
+		</script>
+		<!-- End Google Tag Manager -->
 	</head>
 	<body>
 		<slot />
@@ -46,6 +393,124 @@ import "bootstrap/dist/css/bootstrap.min.css";
 				revealElements.forEach((el) => observer.observe(el));
 			});
 		</script>
+
+		<script>
+			// Campana: Promo Agosto - Todo incluido
+			(function () {
+				const params = new URLSearchParams(window.location.search);
+				const persistUtm = (param, storageKey) => {
+					const value = params.get(param);
+					if (value) {
+						sessionStorage.setItem(storageKey, value);
+					}
+				};
+				persistUtm("utm_campaign", "utm_campaign");
+				persistUtm("utm_source", "utm_source");
+				persistUtm("utm_term", "utm_term");
+				persistUtm("utm_medium", "utm_medium");
+				persistUtm("utm_content", "utm_content");
+				persistUtm("gclid", "gclid");
+				persistUtm("fbclid", "fbclid");
+			})();
+			(function () {
+				"use strict";
+
+				const DEFAULT_CAMPAIGN = "Promo Agosto - Todo incluido";
+				const DEFAULT_SOURCE = "Web";
+				const CAMPAIGN_URL =
+					"https://laundry-brokers.com/todo-incluido/";
+				const urlApi = "https://lglaundrylounge.com/api/track";
+
+				function trackWhatsApp() {
+					const currentUrl = window.location.href;
+					if (CAMPAIGN_URL && !currentUrl.startsWith(CAMPAIGN_URL))
+						return;
+					if (window.__kronosWhatsappTracked) return;
+
+					window.__kronosWhatsappTracked = true;
+					const params = new URLSearchParams(window.location.search);
+					const nombreProducto =
+						document.querySelector("h1")?.innerText ||
+						document.title;
+
+					fetch(urlApi, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Accept: "application/json",
+							"X-Requested-With": "XMLHttpRequest",
+						},
+						body: JSON.stringify({
+							type: "whatsapp",
+							campaing:
+								sessionStorage.getItem("utm_campaign") ||
+								params.get("utm_campaign") ||
+								DEFAULT_CAMPAIGN,
+							fuente:
+								sessionStorage.getItem("utm_source") ||
+								params.get("utm_source") ||
+								DEFAULT_SOURCE,
+							producto: nombreProducto.substring(0, 250),
+							url_original: currentUrl,
+							utm_term:
+								sessionStorage.getItem("utm_term") ||
+								params.get("utm_term") ||
+								null,
+							utm_medium:
+								sessionStorage.getItem("utm_medium") ||
+								params.get("utm_medium") ||
+								null,
+							utm_content:
+								sessionStorage.getItem("utm_content") ||
+								params.get("utm_content") ||
+								null,
+							gclid:
+								sessionStorage.getItem("gclid") ||
+								params.get("gclid") ||
+								null,
+							fbclid:
+								sessionStorage.getItem("fbclid") ||
+								params.get("fbclid") ||
+								null,
+							referer: document.referrer || null,
+						}),
+					})
+						.then((res) => res.json())
+						.then((data) =>
+							console.log("WhatsApp Registrado:", data),
+						)
+						.catch((err) => console.error("Error:", err));
+				}
+
+				// Compatibilidad WP (JoinChat)
+				document.addEventListener("joinchat:open", trackWhatsApp);
+
+				// Compatibilidad HTML Universal / Framer: Escuchar clicks globales en enlaces de WhatsApp
+				document.addEventListener("click", function (e) {
+					const target = e.target.closest("a");
+					if (!target) return;
+
+					const href = target.getAttribute("href") || "";
+					// Detecta patrones comunes de API o links directos de WhatsApp
+					if (
+						href.includes("wa.me") ||
+						href.includes("api.whatsapp.com") ||
+						href.includes("whatsapp://")
+					) {
+						trackWhatsApp();
+					}
+				});
+			})();
+		</script>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-KHD3JM6"
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"></iframe></noscript
+		>
+		<!-- End Google Tag Manager (noscript) -->
 	</body>
 </html>
 
@@ -140,5 +605,339 @@ import "bootstrap/dist/css/bootstrap.min.css";
 	}
 	.animate-delay-2 {
 		animation-delay: 300ms;
+	}
+
+	/* Bitrix24 100% Full Width & Pixel-Perfect Styling */
+	.form-container-box div,
+	.form-container-box form,
+	.form-container-box fieldset,
+	.form-container-box .b24-wrapper,
+	.form-container-box .b24-form,
+	.form-container-box .b24-form-wrapper,
+	.form-container-box .b24-form-fields,
+	.form-container-box .b24-form-row,
+	.form-container-box .b24-form-col,
+	.form-container-box [class*="b24-form-col"],
+	.form-container-box [class*="b24-form-row"],
+	.form-container-box .b24-form-field,
+	.form-container-box [class*="b24-form-field"],
+	.form-container-box .b24-form-control-container,
+	.form-container-box .b24-form-control-wrapper,
+	.form-container-box .b24-form-control,
+	.form-container-box [class*="b24-form-control"] {
+		width: 100% !important;
+		max-width: 100% !important;
+		min-width: 100% !important;
+		flex: 1 1 100% !important;
+		box-sizing: border-box !important;
+	}
+
+	.form-container-box .b24-form,
+	.form-container-box .b24-form-wrapper {
+		background: transparent !important;
+		color: #ffffff !important;
+		font-family: "Inter", sans-serif !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+
+	.form-container-box .b24-form-row,
+	.form-container-box .b24-form-col,
+	.form-container-box [class*="b24-form-col"],
+	.form-container-box [class*="b24-form-row"] {
+		display: block !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	/* Hide unwanted language selector ("la"), translate widgets, and floating overlays */
+	.form-container-box select,
+	.form-container-box .b24-form-control-select,
+	.form-container-box .b24-form-field-select,
+	.form-container-box [class*="language"],
+	.form-container-box [class*="lang-select"],
+	.form-container-box [class*="goog-"],
+	.form-container-box img[src*="google"],
+	.form-container-box .VIpgJd-ZVi9od-ORHb-OEVmcd,
+	.form-container-box .b24-form-fields .b24-form-sign,
+	.form-container-box .b24-form-field [class*="abuse"],
+	.form-container-box .b24-form-fields [class*="abuse"] {
+		display: none !important;
+		visibility: hidden !important;
+		height: 0 !important;
+		width: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+
+	/* Field Row */
+	.form-container-box .b24-form-field {
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		margin-bottom: 14px !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		min-width: 100% !important;
+		box-sizing: border-box !important;
+		position: relative !important;
+		display: block !important;
+	}
+
+	/* Input Box */
+	.form-container-box .b24-form-control-container,
+	.form-container-box .b24-form-control-wrapper {
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		position: relative !important;
+		background-color: rgba(255, 255, 255, 0.06) !important;
+		border: 1px solid rgba(255, 255, 255, 0.18) !important;
+		border-radius: 10px !important;
+		padding: 8px 16px 7px 16px !important;
+		min-height: 58px !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		min-width: 100% !important;
+		box-sizing: border-box !important;
+		transition: all 0.25s ease !important;
+		box-shadow: none !important;
+	}
+
+	.form-container-box .b24-form-control-container:focus-within,
+	.form-container-box .b24-form-control-wrapper:focus-within {
+		background-color: rgba(255, 255, 255, 0.1) !important;
+		border-color: #e5a93c !important;
+		box-shadow: 0 0 12px rgba(229, 169, 60, 0.25) !important;
+	}
+
+	.form-container-box
+		.b24-form-field:has(textarea)
+		.b24-form-control-container,
+	.form-container-box .b24-form-control-container:has(textarea) {
+		min-height: 96px !important;
+		justify-content: flex-start !important;
+		padding-top: 10px !important;
+	}
+
+	/* Labels */
+	.form-container-box .b24-form-control-label,
+	.form-container-box .b24-form-field-label,
+	.form-container-box label {
+		order: 1 !important;
+		color: rgba(255, 255, 255, 0.75) !important;
+		font-size: 11px !important;
+		font-weight: 700 !important;
+		letter-spacing: 0.05em !important;
+		text-transform: uppercase !important;
+		margin: 0 0 3px 0 !important;
+		padding: 0 !important;
+		display: flex !important;
+		align-items: center !important;
+		gap: 4px !important;
+		position: static !important;
+		transform: none !important;
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		opacity: 1 !important;
+		pointer-events: none !important;
+		line-height: 1.1 !important;
+		width: 100% !important;
+	}
+
+	.form-container-box .b24-form-field-label-required,
+	.form-container-box label span,
+	.form-container-box label span[style*="color"] {
+		color: #e5a93c !important;
+		font-weight: 900 !important;
+		display: inline !important;
+	}
+
+	/* Inner Input */
+	.form-container-box .b24-form-control,
+	.form-container-box .b24-form-control-string,
+	.form-container-box .b24-form-control-phone,
+	.form-container-box .b24-form-control-email,
+	.form-container-box .b24-form-control-text {
+		order: 2 !important;
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		height: auto !important;
+		min-height: auto !important;
+		display: flex !important;
+		align-items: center !important;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	.form-container-box input,
+	.form-container-box textarea,
+	.form-container-box .b24-form-control input,
+	.form-container-box .b24-form-control textarea {
+		background: transparent !important;
+		border: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+		color: #ffffff !important;
+		font-size: 14.5px !important;
+		font-weight: 500 !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		box-sizing: border-box !important;
+		font-family: inherit !important;
+		line-height: 1.3 !important;
+	}
+
+	.form-container-box textarea,
+	.form-container-box .b24-form-control textarea {
+		min-height: 50px !important;
+		resize: vertical !important;
+	}
+
+	.form-container-box input::placeholder,
+	.form-container-box textarea::placeholder {
+		color: rgba(255, 255, 255, 0.35) !important;
+		font-size: 13.5px !important;
+	}
+
+	/* Phone */
+	.form-container-box .b24-form-control-phone {
+		display: flex !important;
+		align-items: center !important;
+		gap: 8px !important;
+		width: 100% !important;
+	}
+
+	.form-container-box .b24-form-control-phone span,
+	.form-container-box [class*="phone"] span {
+		color: #ffffff !important;
+		font-weight: 600 !important;
+		font-size: 14.5px !important;
+	}
+
+	/* Hints */
+	.form-container-box .b24-form-field-description,
+	.form-container-box .b24-form-field-hint,
+	.form-container-box .b24-form-control-comment,
+	.form-container-box [class*="description"],
+	.form-container-box [class*="hint"],
+	.form-container-box [class*="comment"],
+	.form-container-box .b24-form-field small {
+		color: #e2e8f0 !important;
+		font-size: 12px !important;
+		font-weight: 500 !important;
+		margin-top: 6px !important;
+		margin-left: 2px !important;
+		padding: 0 !important;
+		display: block !important;
+		background: transparent !important;
+		border: none !important;
+		opacity: 0.95 !important;
+	}
+
+	/* Button 100% Width */
+	.form-container-box .b24-form-btn-container,
+	.form-container-box .b24-form-btn-block {
+		width: 100% !important;
+		max-width: 100% !important;
+		min-width: 100% !important;
+		display: block !important;
+		margin-top: 20px !important;
+		padding: 0 !important;
+		background: transparent !important;
+		border: none !important;
+	}
+
+	.form-container-box button.b24-form-btn,
+	.form-container-box button[type="submit"] {
+		background-color: #e5a93c !important;
+		color: #000c1a !important;
+		font-weight: 900 !important;
+		font-size: 15px !important;
+		letter-spacing: 0.06em !important;
+		text-transform: uppercase !important;
+		border-radius: 10px !important;
+		padding: 14px 20px !important;
+		height: 48px !important;
+		min-height: 48px !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		min-width: 100% !important;
+		border: none !important;
+		box-shadow: 0 4px 15px rgba(229, 169, 60, 0.25) !important;
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+		cursor: pointer !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		box-sizing: border-box !important;
+	}
+
+	.form-container-box button.b24-form-btn:hover,
+	.form-container-box button[type="submit"]:hover {
+		background-color: #f0b84c !important;
+		transform: translateY(-2px) !important;
+		box-shadow: 0 8px 25px rgba(229, 169, 60, 0.4) !important;
+		color: #000c1a !important;
+	}
+
+	.form-container-box button.b24-form-btn *,
+	.form-container-box button[type="submit"] * {
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		color: #000c1a !important;
+		font-weight: 900 !important;
+		font-size: 15px !important;
+		letter-spacing: 0.06em !important;
+		text-transform: uppercase !important;
+		white-space: nowrap !important;
+		display: inline-block !important;
+		width: 100% !important;
+		text-align: center !important;
+		line-height: 1 !important;
+	}
+
+	/* Abuse */
+	.form-container-box .b24-wrapper > .b24-form-sign,
+	.form-container-box .b24-form-wrapper > .b24-form-sign,
+	.form-container-box .b24-form-wrapper > a[href*="abuse"],
+	.form-container-box .b24-form-sign,
+	.form-container-box a[href*="abuse"] {
+		color: #9cb1c9 !important;
+		font-size: 12px !important;
+		font-weight: 500 !important;
+		text-align: center !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		gap: 6px !important;
+		margin-top: 14px !important;
+		text-decoration: none !important;
+		background: transparent !important;
+		border: none !important;
+		opacity: 0.85 !important;
+		transition: all 0.3s ease !important;
+	}
+
+	.form-container-box a[href*="abuse"]:hover,
+	.form-container-box .b24-form-sign:hover {
+		color: #e5a93c !important;
+		opacity: 1 !important;
 	}
 </style>

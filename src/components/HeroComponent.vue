@@ -1,5 +1,5 @@
 <template>
-  <header class="hero-section d-flex align-items-center" id="inicio">
+  <header class="hero-section d-flex align-items-center" id="inicio" :style="{ backgroundImage: `url(${heroBgSrc})` }">
     <div class="container py-3 py-lg-4">
       <div class="row align-items-center">
         <!-- Text and Promo Column -->
@@ -21,7 +21,11 @@
           
           <!-- Benefits Image -->
           <div class="benefits-container d-flex justify-content-center justify-content-lg-start">
-            <img :src="benefitsImageSrc" alt="Puesta en marcha y fletes" class="img-fluid benefits-img" />
+            <img
+              :src="benefitsImageSrc"
+              alt="Puesta en marcha y fletes"
+              class="img-fluid benefits-img"
+            />
           </div>
           
           <!-- CTA Button & Disclaimer -->
@@ -43,14 +47,22 @@
             <div class="col-12 col-md-10 position-relative text-center">
               <!-- Image of Machines -->
               <div class="machines-image-wrapper w-100">
-                <img src="/hero/lavadoras_modelos_waschee.webp" alt="Lavadora y Secadora Industrial Waschée" class="img-fluid machines-img" />
+                <img
+                  :src="machinesImageSrc"
+                  alt="Lavadora y Secadora Industrial Waschée"
+                  class="img-fluid machines-img"
+                />
               </div>
             </div>
             
             <!-- Warranty Display -->
             <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex flex-column align-items-center justify-content-center">
               <div class="warranty-badge-container d-flex flex-column align-items-center">
-                <img src="/hero/ocho_anios_garantia.webp" alt="8 Años de Garantía" class="img-fluid warranty-badge-img mb-2" />
+                <img
+                  :src="warrantyImageSrc"
+                  alt="8 Años de Garantía"
+                  class="img-fluid warranty-badge-img mb-2"
+                />
                 <p class="warranty-text m-0 text-center">
                   COMPROMISO REAL CON LA CALIDAD DE LOS EQUIPOS
                 </p>
@@ -66,10 +78,29 @@
 <script>
 export default {
   name: 'HeroComponent',
+
   data() {
     return {
-      benefitsImageSrc: '/hero/puesta_marcha_mantenimiento_colored.webp'
+      baseUrl: (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/'
     };
+  },
+
+  computed: {
+    heroBgSrc() {
+      return `${this.baseUrl}hero/banner1_todo_incluido_waschee_WLCA.webp`;
+    },
+
+    benefitsImageSrc() {
+      return `${this.baseUrl}hero/puesta_marcha_mantenimiento_colored.webp`;
+    },
+
+    machinesImageSrc() {
+      return `${this.baseUrl}hero/lavadoras_modelos_waschee.webp`;
+    },
+
+    warrantyImageSrc() {
+      return `${this.baseUrl}hero/ocho_anios_garantia.webp`;
+    }
   }
 };
 </script>
@@ -79,7 +110,6 @@ export default {
 
 .hero-section {
   position: relative;
-  background-image: url('/hero/banner1_todo_incluido_waschee_WLCA.webp');
   background-size: cover;
   background-position: center;
   color: #ffffff;

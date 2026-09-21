@@ -15,10 +15,10 @@
         <!-- Card 1: Hotelería -->
         <div class="col-12 col-sm-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
-            <img src="/business/hotel_1.webp" alt="Hotelería" class="card-img-top sector-img" />
+            <img :src="sectors.hotel.img" alt="Hotelería" class="card-img-top sector-img" />
             <div class="card-body p-3 p-md-4 d-flex align-items-start gap-3">
               <div class="icon-circle flex-shrink-0">
-                <img src="/business/hotelería_waschee.webp" alt="Icono Hotelería" class="sector-icon" />
+                <img :src="sectors.hotel.icon" alt="Icono Hotelería" class="sector-icon" />
               </div>
               <div class="card-text-content">
                 <h4 class="card-title text-uppercase">HOTELERÍA</h4>
@@ -33,10 +33,10 @@
         <!-- Card 2: Hospitales -->
         <div class="col-12 col-sm-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
-            <img src="/business/hospital.webp" alt="Hospitales" class="card-img-top sector-img" />
+            <img :src="sectors.hospital.img" alt="Hospitales" class="card-img-top sector-img" />
             <div class="card-body p-3 p-md-4 d-flex align-items-start gap-3">
               <div class="icon-circle flex-shrink-0">
-                <img src="/business/hospitales_waschee.webp" alt="Icono Hospitales" class="sector-icon" />
+                <img :src="sectors.hospital.icon" alt="Icono Hospitales" class="sector-icon" />
               </div>
               <div class="card-text-content">
                 <h4 class="card-title text-uppercase">HOSPITALES</h4>
@@ -51,10 +51,10 @@
         <!-- Card 3: Minería -->
         <div class="col-12 col-sm-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
-            <img src="/business/mina_1.webp" alt="Minería" class="card-img-top sector-img" />
+            <img :src="sectors.mina.img" alt="Minería" class="card-img-top sector-img" />
             <div class="card-body p-3 p-md-4 d-flex align-items-start gap-3">
               <div class="icon-circle flex-shrink-0">
-                <img src="/business/mineria_aschee_2.webp" alt="Icono Minería" class="sector-icon" />
+                <img :src="sectors.mina.icon" alt="Icono Minería" class="sector-icon" />
               </div>
               <div class="card-text-content">
                 <h4 class="card-title text-uppercase">MINERÍA</h4>
@@ -69,10 +69,10 @@
         <!-- Card 4: Industria -->
         <div class="col-12 col-sm-6 col-lg-3 reveal-child">
           <div class="card sector-card h-100">
-            <img src="/business/industra.webp" alt="Industria" class="card-img-top sector-img" />
+            <img :src="sectors.industria.img" alt="Industria" class="card-img-top sector-img" />
             <div class="card-body p-3 p-md-4 d-flex align-items-start gap-3">
               <div class="icon-circle flex-shrink-0">
-                <img src="/business/industria_waschee.webp" alt="Icono Industria" class="sector-icon" />
+                <img :src="sectors.industria.icon" alt="Icono Industria" class="sector-icon" />
               </div>
               <div class="card-text-content">
                 <h4 class="card-title text-uppercase">INDUSTRIA</h4>
@@ -90,7 +90,30 @@
 
 <script>
 export default {
-  name: 'SectorsComponent'
+  name: 'SectorsComponent',
+  data() {
+    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/';
+    return {
+      sectors: {
+        hotel: {
+          img: `${base}business/hotel_1.webp`,
+          icon: `${base}business/hotelería_waschee.webp`
+        },
+        hospital: {
+          img: `${base}business/hospital.webp`,
+          icon: `${base}business/hospitales_waschee.webp`
+        },
+        mina: {
+          img: `${base}business/mina_1.webp`,
+          icon: `${base}business/mineria_aschee_2.webp`
+        },
+        industria: {
+          img: `${base}business/industra.webp`,
+          icon: `${base}business/industria_waschee.webp`
+        }
+      }
+    };
+  }
 };
 </script>
 

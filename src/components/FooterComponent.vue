@@ -5,7 +5,7 @@
         
         <!-- Left Side: Brand Logo and Subtitle -->
         <div class="footer-brand d-flex flex-column align-items-center align-items-lg-start">
-          <img src="/logos/Logo_Laundrybrokers.png" alt="Waschée Logo" class="footer-logo mb-1" style="width: 220px; height: auto;" />
+          <img :src="logoSrc" alt="Waschée Logo" class="footer-logo mb-1" style="width: 220px; height: auto;" />
           <span class="footer-brand-subtext">EQUIPOS DE LAVANDERÍA INDUSTRIAL</span>
         </div>
         
@@ -13,15 +13,15 @@
         <div class="footer-contacts d-flex flex-column flex-sm-row align-items-center justify-content-center gap-2 gap-sm-3 gap-md-4">
           <!-- Web Site Link -->
           <a href="https://laundry-brokers.com" target="_blank" rel="noopener noreferrer" class="footer-contact-link">
-            <img src="/footer/sitio_web_laundry_brokers_waschee.webp" alt="Website laundry-brokers.com" class="footer-contact-img" />
+            <img :src="contacts.web" alt="Website laundry-brokers.com" class="footer-contact-img" />
           </a>
           <!-- Telephone Link -->
           <a href="tel:5550590039" class="footer-contact-link">
-            <img src="/footer/numero_telefonico_waschee.webp" alt="Teléfono (55) 5059 0039" class="footer-contact-img" />
+            <img :src="contacts.tel" alt="Teléfono (55) 5059 0039" class="footer-contact-img" />
           </a>
           <!-- Email Link -->
           <a href="mailto:iniciativas@laundry-brokers.com" class="footer-contact-link">
-            <img src="/footer/correo_electroniico_easchee.webp" alt="Correo iniciativas@laundry-brokers.com" class="footer-contact-img" />
+            <img :src="contacts.email" alt="Correo iniciativas@laundry-brokers.com" class="footer-contact-img" />
           </a>
         </div>
         
@@ -54,7 +54,18 @@
 
 <script>
 export default {
-  name: 'FooterComponent'
+  name: 'FooterComponent',
+  data() {
+    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') + '/';
+    return {
+      logoSrc: `${base}logos/Logo_Laundrybrokers.png`,
+      contacts: {
+        web: `${base}footer/sitio_web_laundry_brokers_waschee.webp`,
+        tel: `${base}footer/numero_telefonico_waschee.webp`,
+        email: `${base}footer/correo_electroniico_easchee.webp`
+      }
+    };
+  }
 };
 </script>
 
