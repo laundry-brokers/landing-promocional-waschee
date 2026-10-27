@@ -56,7 +56,7 @@
             </div>
             
             <!-- Warranty Display -->
-            <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex flex-column align-items-center justify-content-center">
+            <div class="col-12 col-md-2 mt-3 mt-md-0 d-flex flex-column align-items-center justify-content-center hero-offers">
               <div class="warranty-badge-container d-flex flex-column align-items-center">
                 <img
                   :src="warrantyImageSrc"
@@ -67,6 +67,14 @@
                   COMPROMISO REAL CON LA CALIDAD DE LOS EQUIPOS
                 </p>
               </div>
+              <img
+                v-if="financingImageSrc"
+                :src="financingImageSrc"
+                alt="3 y 6 meses sin intereses o 10% de descuento en pago de contado al 100%"
+                class="financing-badge-img"
+                width="1760"
+                height="1407"
+              />
             </div>
           </div>
         </div>
@@ -76,6 +84,10 @@
 </template>
 
 <script>
+const financingImageAvailable = Object.keys(
+  import.meta.glob('/public/hero/meses-sin-intereses.png')
+).length > 0;
+
 export default {
   name: 'HeroComponent',
 
@@ -100,6 +112,12 @@ export default {
 
     warrantyImageSrc() {
       return `${this.baseUrl}hero/ocho_anios_garantia.webp`;
+    },
+
+    financingImageSrc() {
+      return financingImageAvailable
+        ? `${this.baseUrl}hero/meses-sin-intereses.png`
+        : null;
     }
   }
 };
@@ -220,6 +238,31 @@ export default {
 }
 
 /* Warranty Styling */
+.hero-offers {
+  position: relative;
+  gap: 24px;
+}
+
+.financing-badge-img {
+  display: block;
+  width: clamp(130px, 13vw, 190px);
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 767.98px) {
+  .hero-offers {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .financing-badge-img {
+    width: min(44%, 190px);
+  }
+}
+
 .warranty-badge-container {
   max-width: 160px;
 }
